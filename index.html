@@ -2,1083 +2,290 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<title>For Alara ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alara Birthday Cake ❤️</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
 html,body{
-    margin:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
 }
 
 body{
-    font-family:Georgia,"Times New Roman",serif;
-    color:#61384a;
-    background:#fff7f7;
-}
-
-.scene{
-    position:fixed;
-    inset:0;
-    padding:24px 18px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    opacity:0;
-    visibility:hidden;
-    transform:scale(1.03);
-
-    transition:
-        opacity .7s ease,
-        transform .7s ease,
-        visibility .7s;
-}
-
-.scene.active{
-    opacity:1;
-    visibility:visible;
-    transform:scale(1);
+  font-family:Georgia,serif;
+  color:#713d55;
+  background:
+    radial-gradient(circle at 50% 15%,#ffe0eb,transparent 45%),
+    #fff8f6;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
 .content{
-    width:100%;
-    max-width:440px;
-    text-align:center;
-    position:relative;
-    z-index:5;
+  width:100%;
+  max-width:440px;
+  text-align:center;
 }
 
 .eyebrow{
-    font:11px Arial,sans-serif;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:#aa7185;
-    margin-bottom:12px;
+  font:11px Arial,sans-serif;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#aa7185;
 }
 
 h1{
-    margin:8px 0;
-    color:#7c3f59;
-}
-
-.title{
-    font-size:clamp(39px,11vw,58px);
-    line-height:1.05;
+  font-size:34px;
+  color:#813f5b;
+  margin:10px 0;
 }
 
 .sub{
-    font:15px Arial,sans-serif;
-    line-height:1.75;
-    color:#80606c;
+  font:15px Arial,sans-serif;
+  line-height:1.7;
+  color:#80606c;
 }
 
 .btn{
-    border:0;
-    border-radius:50px;
-    padding:14px 25px;
-    margin-top:20px;
-
-    background:white;
-    color:#a04d70;
-
-    font:bold 15px Arial,sans-serif;
-
-    box-shadow:0 10px 30px rgba(100,45,70,.16);
-
-    cursor:pointer;
-}
-
-.btn:active{
-    transform:scale(.95);
+  border:0;
+  border-radius:50px;
+  padding:14px 24px;
+  margin:10px 5px;
+  background:#fff;
+  color:#a04d70;
+  font:bold 15px Arial,sans-serif;
+  box-shadow:0 10px 28px #9b5b711f;
+  cursor:pointer;
 }
 
 .hidden{
-    display:none!important;
+  display:none!important;
 }
 
-
-/* BACKGROUNDS */
-
-#s1{
-    background:
-        radial-gradient(circle at 15% 15%,#ffe1ec,transparent 32%),
-        radial-gradient(circle at 90% 85%,#e8dcff,transparent 34%),
-        #fff8f6;
-}
-
-#s2{
-    background:
-        radial-gradient(circle at 50% 15%,#ffe5ee,transparent 40%),
-        #fff9f7;
-}
-
-#s3{
-    background:
-        linear-gradient(160deg,#fff6f8,#f7efff);
-}
-
-#s4{
-    background:
-        radial-gradient(circle at 50% 20%,#ffe5ef,transparent 43%),
-        #fff9f5;
-}
-
-#s5{
-    background:
-        linear-gradient(145deg,#fff5f8,#f4edff);
-}
-
-#s6{
-    background:
-        radial-gradient(circle at 50% 20%,#ffe2ed,transparent 45%),
-        #fff9f7;
-}
-
-#s7{
-    background:
-        linear-gradient(150deg,#fff7f5,#f8edff);
-}
-
-#s8{
-    background:
-        radial-gradient(circle at 50% 20%,#ffe0eb,transparent 48%),
-        #fff7f6;
-}
-
-
-/* FLOATING HEARTS */
-
-.bgheart{
-    position:fixed;
-    bottom:-30px;
-
-    font-size:20px;
-    opacity:.25;
-
-    pointer-events:none;
-
-    animation:floatUp 7s linear forwards;
-
-    z-index:1;
-}
-
-@keyframes floatUp{
-
-    to{
-        transform:
-            translateY(-115vh)
-            rotate(360deg);
-
-        opacity:0;
-    }
-
-}
-
-
-/* ENVELOPE */
-
-.envelope-wrap{
-    width:285px;
-    height:210px;
-
-    margin:30px auto 18px;
-
-    position:relative;
-
-    cursor:pointer;
-
-    perspective:800px;
-}
-
-.envelope{
-    position:absolute;
-    inset:0;
-
-    background:#d789a4;
-
-    border-radius:7px;
-
-    box-shadow:
-        0 20px 45px rgba(100,50,70,.2);
-}
-
-.env-letter{
-    position:absolute;
-
-    width:232px;
-    height:155px;
-
-    left:26px;
-    top:26px;
-
-    background:#fffdf8;
-
-    border-radius:5px;
-
-    z-index:2;
-
-    box-shadow:
-        0 5px 15px rgba(0,0,0,.08);
-
-    transition:transform .9s ease;
-
-    padding:16px 10px;
-
-    font:13px Arial,sans-serif;
-
-    color:#8a5b6c;
-}
-
-.flap{
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:0;
-    height:0;
-
-    border-left:142px solid transparent;
-    border-right:142px solid transparent;
-    border-top:108px solid #e5a0b5;
-
-    transform-origin:top center;
-
-    transition:transform .8s ease;
-
-    z-index:6;
-}
-
-.envelope:before,
-.envelope:after{
-    content:"";
-
-    position:absolute;
-
-    bottom:0;
-
-    width:0;
-    height:0;
-
-    border-style:solid;
-
-    z-index:4;
-}
-
-.envelope:before{
-    left:0;
-
-    border-width:
-        0
-        0
-        210px
-        142px;
-
-    border-color:
-        transparent
-        transparent
-        #c97692
-        transparent;
-}
-
-.envelope:after{
-    right:0;
-
-    border-width:
-        210px
-        0
-        0
-        142px;
-
-    border-color:
-        transparent
-        transparent
-        transparent
-        #c97692;
-}
-
-.seal{
-    position:absolute;
-
-    z-index:8;
-
-    width:56px;
-    height:56px;
-
-    border-radius:50%;
-
-    background:#a44d6e;
-
-    color:white;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    left:calc(50% - 28px);
-    top:83px;
-
-    font-size:23px;
-
-    box-shadow:
-        0 5px 15px rgba(90,40,60,.2);
-
-    transition:.3s;
-}
-
-.envelope.open .flap{
-    transform:rotateX(180deg);
-}
-
-.envelope.open .env-letter{
-    transform:translateY(-78px);
-}
-
-.envelope.open .seal{
-    opacity:0;
-}
-
-.open-note{
-    background:rgba(255,255,255,.8);
-
-    border-radius:18px;
-
-    padding:15px;
-
-    font:14px Arial,sans-serif;
-
-    color:#7d5967;
-
-    margin:8px auto;
-
-    max-width:350px;
-}
-
-
-/* BIRTHDAY */
-
-.cakeemoji{
-    font-size:92px;
-
-    animation:
-        bounce 1.7s
-        ease-in-out
-        infinite;
-}
-
-@keyframes bounce{
-
-    50%{
-        transform:translateY(-10px);
-    }
-
-}
-
-.script{
-    font-family:
-        "Brush Script MT",
-        "Segoe Script",
-        cursive;
-
-    font-size:68px;
-
-    color:#bf557c;
-
-    margin:0;
-}
-
-
-/* BALLOONS */
-
-.balloon-stage{
-    height:310px;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:flex-start;
-
-    gap:9px;
-
-    padding-top:25px;
-}
-
-.balloon-item{
-    width:68px;
-    height:245px;
-
-    position:relative;
-
-    display:flex;
-
-    justify-content:center;
-}
-
-.balloon{
-    width:58px;
-    height:76px;
-
-    border-radius:
-        50%
-        50%
-        47%
-        47%;
-
-    position:absolute;
-
-    top:0;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-.balloon:after{
-    content:"";
-
-    position:absolute;
-
-    left:50%;
-    top:73px;
-
-    width:1.5px;
-    height:125px;
-
-    background:#a98591;
-}
-
-.balloon:before{
-    content:"";
-
-    position:absolute;
-
-    left:calc(50% - 5px);
-
-    bottom:-4px;
-
-    border-left:5px solid transparent;
-    border-right:5px solid transparent;
-
-    border-top:8px solid currentColor;
-}
-
-.b1{
-    background:#e993af;
-}
-
-.b2{
-    background:#bba1e6;
-}
-
-.b3{
-    background:#f1bd82;
-}
-
-.b4{
-    background:#df89a9;
-}
-
-.balloon.popped{
-    animation:
-        pop .35s forwards;
-}
-
-@keyframes pop{
-
-    50%{
-        transform:scale(1.35);
-    }
-
-    100%{
-        transform:scale(0);
-        opacity:0;
-    }
-
-}
-
-.balloon-word{
-    position:absolute;
-
-    top:90px;
-
-    width:72px;
-
-    min-height:46px;
-
-    opacity:0;
-
-    transform:
-        translateY(-8px)
-        scale(.8);
-
-    transition:.45s;
-
-    font:bold 12px Arial,sans-serif;
-
-    letter-spacing:1.5px;
-
-    color:#9a6075;
-}
-
-.balloon-word.show{
-    opacity:1;
-
-    transform:
-        translateY(0)
-        scale(1);
-}
-
-.popburst{
-    position:fixed;
-
-    z-index:100;
-
-    font-size:19px;
-
-    pointer-events:none;
-}
-
-
-/* GIFT */
-
-.gift{
-    width:190px;
-    height:170px;
-
-    margin:40px auto 10px;
-
-    position:relative;
-
-    cursor:pointer;
-}
-
-.gbody{
-    position:absolute;
-
-    bottom:0;
-    left:5px;
-
-    width:180px;
-    height:112px;
-
-    background:#d67f9d;
-
-    border-radius:5px;
-
-    box-shadow:
-        0 18px 35px
-        rgba(100,50,70,.18);
-}
-
-.glid{
-    position:absolute;
-
-    top:35px;
-    left:0;
-
-    width:190px;
-    height:40px;
-
-    background:#c86f8e;
-
-    border-radius:5px;
-
-    z-index:5;
-
-    transition:.75s;
-}
-
-.ribbonV{
-    position:absolute;
-
-    left:76px;
-    top:0;
-
-    width:29px;
-    height:100%;
-
-    background:#f7d9e2;
-}
-
-.ribbonH{
-    position:absolute;
-
-    left:0;
-    top:49px;
-
-    width:100%;
-    height:24px;
-
-    background:#f7d9e2;
-}
-
-.bow{
-    position:absolute;
-
-    top:0;
-    left:58px;
-
-    font-size:52px;
-
-    z-index:7;
-
-    transition:.75s;
-}
-
-.gift.open .glid{
-    transform:
-        translateY(-75px)
-        rotate(-6deg);
-}
-
-.gift.open .bow{
-    transform:translateY(-78px);
-
-    opacity:0;
-}
-
-.gift-inside{
-    position:absolute;
-
-    z-index:4;
-
-    left:20px;
-    top:22px;
-
-    width:150px;
-    height:95px;
-
-    opacity:0;
-
-    transform:translateY(18px);
-
-    transition:.7s;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:42px;
-}
-
-.gift.open .gift-inside{
-    opacity:1;
-
-    transform:translateY(-4px);
-}
-
-.gift-note{
-    background:rgba(255,255,255,.8);
-
-    border-radius:18px;
-
-    padding:14px;
-
-    font:14px Arial,sans-serif;
-
-    color:#7d5967;
-
-    max-width:350px;
-
-    margin:auto;
-}
-
-
-/* FUNNY */
-
-.funny{
-    margin:14px auto;
-
-    padding:12px 15px;
-
-    max-width:360px;
-
-    border-radius:18px;
-
-    background:#fff0f5;
-
-    font:13px Arial,sans-serif;
-
-    color:#8d5b6b;
-}
-
-
-/* REASONS */
-
-.reason-card{
-    background:rgba(255,255,255,.8);
-
-    border-radius:25px;
-
-    padding:28px 20px;
-
-    box-shadow:
-        0 16px 45px
-        rgba(100,50,70,.1);
-
-    min-height:250px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    flex-direction:column;
-}
-
-.reason-icon{
-    font-size:53px;
-}
-
-.reason-title{
-    font-size:24px;
-
-    color:#89445f;
-
-    margin:10px;
-}
-
-.reason-text{
-    font:15px Arial,sans-serif;
-
-    line-height:1.75;
-
-    color:#7d5d69;
-}
-
-
-/* CAKE */
-
-.cakebox{
-    width:280px;
-
-    height:270px;
-
-    position:relative;
-
-    margin:15px auto;
-}
-
-.cbody{
-    position:absolute;
-
-    left:35px;
-    bottom:25px;
-
-    width:210px;
-    height:105px;
-
-    background:#e6a0b5;
-
-    border-radius:
-        10px
-        10px
-        18px
-        18px;
-
-    box-shadow:
-        0 14px 28px
-        rgba(100,50,70,.15);
-}
-
-.cream{
-    position:absolute;
-
-    left:35px;
-    bottom:105px;
-
-    width:210px;
-    height:30px;
-
-    background:#fff7f0;
-
-    border-radius:20px;
-}
-
-.candle{
-    position:absolute;
-
-    bottom:132px;
-
-    width:13px;
-    height:58px;
-
-    background:#cb7795;
-
-    border-radius:4px;
-
-    cursor:pointer;
-
-    z-index:3;
-}
-
-.candle:nth-child(1){
-    left:88px;
-}
-
-.candle:nth-child(2){
-    left:134px;
-}
-
-.candle:nth-child(3){
-    left:180px;
-}
-
-.flame{
-    position:absolute;
-
-    width:18px;
-    height:27px;
-
-    left:-2.5px;
-    top:-26px;
-
-    background:#ffc65a;
-
-    border-radius:
-        50%
-        50%
-        50%
-        0;
-
-    transform:rotate(-45deg);
-
-    box-shadow:
-        0 0 18px #ffc65a;
-
-    animation:
-        flicker .55s
-        infinite alternate;
-}
-
-@keyframes flicker{
-
-    to{
-        transform:
-            rotate(-45deg)
-            scale(1.13);
-    }
-
-}
-
-.candle.off .flame{
-    display:none;
-}
-
-
-/* LETTER */
-
-.letter-card{
-    background:rgba(255,255,255,.83);
-
-    border-radius:24px;
-
-    padding:24px 20px;
-
-    max-height:63vh;
-
-    overflow:auto;
-
-    box-shadow:
-        0 18px 50px
-        rgba(100,50,70,.12);
-}
-
-.letter-card p{
-    font:15px Arial,sans-serif;
-
-    line-height:1.85;
-
-    color:#765865;
-
-    text-align:left;
-}
-
-.signature{
-    font:
-        32px
-        "Brush Script MT",
-        "Segoe Script",
-        cursive;
-
-    color:#b34f76;
-}
-
-
-/* FINAL HEART */
-
-.finalheart{
-    font-size:96px;
-
-    animation:
-        heart 1.2s infinite;
-}
-
-@keyframes heart{
-
-    15%{
-        transform:scale(1.16);
-    }
-
-    30%{
-        transform:scale(1);
-    }
-
-    45%{
-        transform:scale(1.1);
-    }
-
-}
-
-
-/* MUSIC */
-
+/* MUSIC BUTTON */
 .music{
-    position:fixed;
-
-    right:16px;
-    top:16px;
-
-    z-index:500;
-
-    width:48px;
-    height:48px;
-
-    border:0;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.85);
-
-    font-size:20px;
-
-    color:#9b4d70;
-
-    box-shadow:
-        0 8px 22px
-        rgba(70,30,50,.12);
+  position:fixed;
+  right:15px;
+  top:15px;
+  z-index:500;
+  width:48px;
+  height:48px;
+  border:0;
+  border-radius:50%;
+  background:#ffffffe8;
+  font-size:20px;
+  color:#9b4d70;
+  box-shadow:0 8px 22px #461e321f;
 }
 
 .music.on{
-    animation:
-        spin 3s linear infinite;
+  animation:spin 3s linear infinite;
 }
 
 @keyframes spin{
-
-    to{
-        transform:rotate(360deg);
-    }
-
+  to{
+    transform:rotate(360deg);
+  }
 }
 
-
-/* PROGRESS */
-
-.progress{
-    position:fixed;
-
-    bottom:15px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    display:flex;
-
-    gap:6px;
-
-    z-index:500;
+/* CAKE AREA */
+.cake-area{
+  position:relative;
+  width:320px;
+  height:310px;
+  margin:4px auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.dot{
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#d7b9c5;
-
-    transition:.3s;
+/* CAKE */
+.cake-emoji{
+  font-size:155px;
+  position:relative;
+  z-index:3;
+  filter:drop-shadow(0 14px 12px rgba(100,40,70,.18));
+  transition:.35s;
 }
 
-.dot.on{
-    width:21px;
-
-    border-radius:10px;
-
-    background:#ad5577;
+.cake-emoji.shake{
+  animation:cakeShake .55s ease;
 }
 
-
-/* CONFETTI */
-
-.conf{
-    position:fixed;
-
-    top:-30px;
-
-    z-index:900;
-
-    pointer-events:none;
-
-    animation:
-        fall 4s linear forwards;
+@keyframes cakeShake{
+  20%{
+    transform:rotate(-5deg);
+  }
+  40%{
+    transform:rotate(5deg);
+  }
+  60%{
+    transform:rotate(-3deg);
+  }
+  80%{
+    transform:rotate(3deg);
+  }
+  100%{
+    transform:rotate(0);
+  }
 }
 
-@keyframes fall{
-
-    to{
-        transform:
-            translateY(115vh)
-            rotate(720deg);
-
-        opacity:0;
-    }
-
+/* CANDLES */
+.candles{
+  position:absolute;
+  top:47px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:17px;
+  z-index:5;
 }
 
+.mini-candle{
+  width:17px;
+  height:45px;
+  background:
+    linear-gradient(
+      90deg,
+      #e79bb5,
+      #fff0f5,
+      #d87899
+    );
+  border-radius:5px 5px 3px 3px;
+  position:relative;
+  cursor:pointer;
+  box-shadow:0 3px 6px rgba(80,30,50,.15);
+}
 
-/* MOBILE */
+.mini-candle span{
+  position:absolute;
+  left:-3px;
+  top:-30px;
+  font-size:22px;
+  transition:.25s;
+}
 
-@media(max-width:390px){
+.mini-candle.off span{
+  opacity:0;
+  transform:scale(.2) translateY(15px);
+}
 
-    .scene{
-        padding:17px 13px;
-    }
+/* KNIFE */
+.knife{
+  position:absolute;
+  right:18px;
+  bottom:45px;
+  font-size:54px;
+  z-index:10;
+  transform:rotate(-20deg);
+  opacity:0;
+  pointer-events:none;
+}
 
-    .envelope-wrap{
-        transform:scale(.87);
+.knife.show{
+  opacity:1;
+  animation:knifeReady .7s ease;
+}
 
-        margin-top:8px;
-    }
+@keyframes knifeReady{
+  from{
+    transform:translate(80px,-50px) rotate(-50deg);
+    opacity:0;
+  }
 
-    .balloon-stage{
-        transform:scale(.88);
+  to{
+    transform:translate(0,0) rotate(-20deg);
+    opacity:1;
+  }
+}
 
-        margin-top:-10px;
-    }
+.knife.cut{
+  animation:knifeCut .9s ease forwards;
+}
 
-    .gift{
-        transform:scale(.9);
+@keyframes knifeCut{
+  0%{
+    transform:translate(0,0) rotate(-20deg);
+  }
 
-        margin-top:20px;
-    }
+  45%{
+    transform:translate(-105px,45px) rotate(-45deg);
+  }
 
-    .letter-card{
-        max-height:60vh;
-    }
+  70%{
+    transform:translate(-85px,65px) rotate(-45deg);
+  }
 
+  100%{
+    transform:translate(0,0) rotate(-20deg);
+  }
+}
+
+/* CAKE CUT */
+.cake-emoji.cut{
+  animation:cakeCut .9s ease;
+}
+
+@keyframes cakeCut{
+  0%{
+    transform:scale(1);
+  }
+
+  35%{
+    transform:scale(1.08) rotate(-3deg);
+  }
+
+  55%{
+    transform:scale(.96) rotate(3deg);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+/* CELEBRATION */
+.cake-spark{
+  position:fixed;
+  pointer-events:none;
+  z-index:1000;
+  font-size:25px;
+  animation:cakeSpark 1.7s ease forwards;
+}
+
+@keyframes cakeSpark{
+  0%{
+    transform:translate(0,0) scale(.5);
+    opacity:0;
+  }
+
+  20%{
+    opacity:1;
+  }
+
+  100%{
+    transform:
+      translate(var(--dx),var(--dy))
+      scale(1.2)
+      rotate(360deg);
+    opacity:0;
+  }
+}
+
+.done{
+  margin-top:4px;
+  font:bold 17px Arial;
+  color:#9b4d70;
+  min-height:26px;
 }
 </style>
 </head>
@@ -1086,1190 +293,286 @@ h1{
 
 <body>
 
-
 <!-- MUSIC BUTTON -->
-
 <button
-    class="music"
-    id="musicBtn"
-    onclick="toggleMusic()"
->
-    🎵
+  class="music"
+  id="musicBtn"
+  onclick="toggleMusic()">
+  🎵
 </button>
 
 
-<!-- PROGRESS -->
-
-<div class="progress">
-
-    <span class="dot on" id="d1"></span>
-
-    <span class="dot" id="d2"></span>
-
-    <span class="dot" id="d3"></span>
-
-    <span class="dot" id="d4"></span>
-
-    <span class="dot" id="d5"></span>
-
-    <span class="dot" id="d6"></span>
-
-    <span class="dot" id="d7"></span>
-
-    <span class="dot" id="d8"></span>
-
-</div>
-
-
-<!-- SCENE 1 -->
-
-<section
-    class="scene active"
-    id="s1"
->
-
 <div class="content">
 
-    <div class="eyebrow">
-        A little surprise
-    </div>
+  <div class="eyebrow">
+    Birthday Cake
+  </div>
+
+  <h1>
+    Time to Cut the Cake 🎂
+  </h1>
 
 
-    <div style="font-size:76px">
-        🌷
-    </div>
-
-
-    <h1 class="title">
-        A Special Day<br>
-        Is Here ✨
-    </h1>
-
-
-    <p class="sub">
-
-        Today belongs to someone
-        very important.
-
-        <br>
-
-        And this little surprise
-        has only one name...
-
-    </p>
-
-
-    <button
-        class="btn"
-        onclick="go(2);startMusic()"
-    >
-
-        Open My Surprise 💌
-
-    </button>
-
-</div>
-
-</section>
-
-
-
-<!-- SCENE 2 ENVELOPE -->
-
-<section
-    class="scene"
-    id="s2"
->
-
-<div class="content">
-
-    <div class="eyebrow">
-        Just for Alara
-    </div>
-
-
-    <h1>
-        There is a little letter for you 💗
-    </h1>
-
+  <!-- CAKE -->
+  <div class="cake-area">
 
     <div
-        class="envelope-wrap"
-        id="env"
-        onclick="openEnvelope()"
-    >
-
-        <div class="envelope">
-
-            <div class="env-letter">
-
-                A tiny message
-                is waiting inside...
-
-                <br><br>
-
-                — Open me 💕
-
-            </div>
+      class="cake-emoji"
+      id="cakeEmoji">
+      🎂
+    </div>
 
 
-            <div class="flap"></div>
+    <!-- CANDLES -->
+    <div class="candles">
 
+      <div
+        class="mini-candle"
+        onclick="cakeCandle(this)">
+        <span>🔥</span>
+      </div>
 
-            <div class="seal">
-                ❤️
-            </div>
+      <div
+        class="mini-candle"
+        onclick="cakeCandle(this)">
+        <span>🔥</span>
+      </div>
 
-        </div>
+      <div
+        class="mini-candle"
+        onclick="cakeCandle(this)">
+        <span>🔥</span>
+      </div>
 
     </div>
 
 
+    <!-- KNIFE -->
     <div
-        class="open-note"
-        id="envNote"
-    >
-
-        Tap the heart seal.
-        Don't be shy 😌
-
+      class="knife"
+      id="knife">
+      🔪
     </div>
+
+  </div>
+
+
+  <p
+    class="sub"
+    id="cakeText">
+
+    Tap all three candles and
+    make your birthday wish ✨
+
+  </p>
+
+
+  <div
+    id="done"
+    class="done">
+  </div>
+
+
+  <!-- CUT BUTTON -->
+  <button
+    class="btn hidden"
+    id="cutBtn"
+    onclick="cutCake()">
+
+    Cut the Cake 🔪
+
+  </button>
+
+
+  <!-- AGAIN BUTTON -->
+  <button
+    class="btn hidden"
+    id="againBtn"
+    onclick="location.reload()">
+
+    See It Again 🔄
+
+  </button>
 
 </div>
-
-</section>
-
-
-
-<!-- SCENE 3 -->
-
-<section
-    class="scene"
-    id="s3"
->
-
-<div class="content">
-
-    <div class="cakeemoji">
-        🎂
-    </div>
-
-
-    <div class="eyebrow">
-        The birthday girl
-    </div>
-
-
-    <div class="script">
-        Alara
-    </div>
-
-
-    <h1>
-        Happy Birthday ❤️
-    </h1>
-
-
-    <p class="sub">
-
-        I hope this little corner
-        of the internet gives you
-        at least one reason to smile today.
-
-    </p>
-
-
-    <div class="funny">
-
-        P.S. I spent way too much time
-        making this.
-
-        So please pretend
-        it was effortless. 😂
-
-    </div>
-
-
-    <button
-        class="btn"
-        onclick="go(4)"
-    >
-
-        Okay, There Is More 👀
-
-    </button>
-
-</div>
-
-</section>
-
-
-
-<!-- SCENE 4 BALLOONS -->
-
-<section
-    class="scene"
-    id="s4"
->
-
-<div class="content">
-
-    <div class="eyebrow">
-        Tiny birthday challenge
-    </div>
-
-
-    <h1>
-        Pop the Balloons 🎈
-    </h1>
-
-
-    <p class="sub">
-
-        Each one is hiding
-        a little wish.
-
-        <br>
-
-        Tap them all.
-
-    </p>
-
-
-    <div class="balloon-stage">
-
-
-        <!-- BALLOON 1 -->
-
-        <div class="balloon-item">
-
-            <div
-                class="balloon b1"
-                onclick="pop(this,0)"
-            ></div>
-
-
-            <div
-                class="balloon-word"
-                id="bw0"
-            >
-
-                LOVE
-                <br>
-                ❤️
-
-            </div>
-
-        </div>
-
-
-
-        <!-- BALLOON 2 -->
-
-        <div class="balloon-item">
-
-            <div
-                class="balloon b2"
-                onclick="pop(this,1)"
-            ></div>
-
-
-            <div
-                class="balloon-word"
-                id="bw1"
-            >
-
-                PEACE
-                <br>
-                🌸
-
-            </div>
-
-        </div>
-
-
-
-        <!-- BALLOON 3 -->
-
-        <div class="balloon-item">
-
-            <div
-                class="balloon b3"
-                onclick="pop(this,2)"
-            ></div>
-
-
-            <div
-                class="balloon-word"
-                id="bw2"
-            >
-
-                DREAMS
-                <br>
-                ✨
-
-            </div>
-
-        </div>
-
-
-
-        <!-- BALLOON 4 -->
-
-        <div class="balloon-item">
-
-            <div
-                class="balloon b4"
-                onclick="pop(this,3)"
-            ></div>
-
-
-            <div
-                class="balloon-word"
-                id="bw3"
-            >
-
-                HAPPINESS
-                <br>
-                💗
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <p
-        class="sub"
-        id="balloonStatus"
-    >
-
-        0 / 4 popped
-
-    </p>
-
-
-    <button
-        class="btn hidden"
-        id="balloonNext"
-        onclick="go(5)"
-    >
-
-        You Found Them All 🎁
-
-    </button>
-
-</div>
-
-</section>
-
-
-
-<!-- SCENE 5 GIFT -->
-
-<section
-    class="scene"
-    id="s5"
->
-
-<div class="content">
-
-    <div class="eyebrow">
-        One more thing...
-    </div>
-
-
-    <h1>
-        There is a gift 🎁
-    </h1>
-
-
-    <div
-        class="gift"
-        id="gift"
-        onclick="openGift()"
-    >
-
-        <div class="gift-inside">
-            💝
-        </div>
-
-
-        <div class="bow">
-            🎀
-        </div>
-
-
-        <div class="glid"></div>
-
-
-        <div class="gbody">
-
-            <div class="ribbonV"></div>
-
-            <div class="ribbonH"></div>
-
-        </div>
-
-    </div>
-
-
-    <div
-        class="gift-note"
-        id="giftNote"
-    >
-
-        Tap the box.
-
-        Yes, really. 😂
-
-    </div>
-
-
-    <button
-        class="btn hidden"
-        id="giftNext"
-        onclick="go(6)"
-    >
-
-        Open the Message 💌
-
-    </button>
-
-</div>
-
-</section>
-
-
-
-<!-- SCENE 6 REASONS -->
-
-<section
-    class="scene"
-    id="s6"
->
-
-<div class="content">
-
-    <div class="eyebrow">
-        A few things I wish for you
-    </div>
-
-
-    <h1>
-        For Alara 💗
-    </h1>
-
-
-    <div class="reason-card">
-
-        <div
-            class="reason-icon"
-            id="ri"
-        >
-            🌷
-        </div>
-
-
-        <div
-            class="reason-title"
-            id="rt"
-        >
-            Beautiful Days
-        </div>
-
-
-        <div
-            class="reason-text"
-            id="rx"
-        >
-
-            I hope life gives you
-            many calm, beautiful days
-            that you can look back on
-            with happiness.
-
-        </div>
-
-    </div>
-
-
-    <button
-        class="btn"
-        onclick="nextReason()"
-        id="reasonBtn"
-    >
-
-        Next One ✨
-
-    </button>
-
-</div>
-
-</section>
-
-
-
-<!-- SCENE 7 CAKE -->
-
-<section
-    class="scene"
-    id="s7"
->
-
-<div class="content">
-
-    <div class="eyebrow">
-        Make a birthday wish
-    </div>
-
-
-    <h1>
-        Three Little Candles 🕯️
-    </h1>
-
-
-    <div class="cakebox">
-
-
-        <!-- CANDLE 1 -->
-
-        <div
-            class="candle"
-            onclick="candle(this)"
-        >
-
-            <div class="flame"></div>
-
-        </div>
-
-
-        <!-- CANDLE 2 -->
-
-        <div
-            class="candle"
-            onclick="candle(this)"
-        >
-
-            <div class="flame"></div>
-
-        </div>
-
-
-        <!-- CANDLE 3 -->
-
-        <div
-            class="candle"
-            onclick="candle(this)"
-        >
-
-            <div class="flame"></div>
-
-        </div>
-
-
-        <div class="cream"></div>
-
-        <div class="cbody"></div>
-
-    </div>
-
-
-    <p
-        class="sub"
-        id="candleText"
-    >
-
-        Tap each candle
-        and make a wish ✨
-
-    </p>
-
-
-    <button
-        class="btn hidden"
-        id="cakeNext"
-        onclick="go(8);confetti()"
-    >
-
-        Wish Complete 💫
-
-    </button>
-
-</div>
-
-</section>
-
-
-
-<!-- SCENE 8 FINAL -->
-
-<section
-    class="scene"
-    id="s8"
->
-
-<div class="content">
-
-    <div class="finalheart">
-        ❤️
-    </div>
-
-
-    <div class="eyebrow">
-        One last message
-    </div>
-
-
-    <h1 class="title">
-        For You, Alara
-    </h1>
-
-
-    <div class="letter-card">
-
-        <p>
-
-            Alara,
-
-            <br><br>
-
-            Happy Birthday. ❤️
-
-            <br><br>
-
-            I don't know every little thing
-            about your world,
-            and I won't pretend that I do.
-
-            But I do know one thing:
-
-            you are important enough to me
-            that I wanted to make something
-            special just for your birthday.
-
-            <br><br>
-
-            I hope this new year of your life
-            brings you peace when you need it,
-            courage when things feel difficult,
-            beautiful opportunities,
-            and countless moments worth remembering.
-
-            <br><br>
-
-            I hope you get to chase the things
-            you want, laugh at the unexpected
-            moments, and make memories that stay
-            with you for a very long time.
-
-            <br><br>
-
-            And if this little website made you
-            laugh even once, then all those hours
-            of coding were absolutely worth it.
-
-            😭😂
-
-            <br><br>
-
-            May your birthday be as special
-            as the place you have in my heart.
-
-            <br><br>
-
-            Happy Birthday, Alara. 🎂🌷
-
-            <br>
-
-            Stay happy.
-            Stay blessed.
-            And keep being you.
-
-            ❤️
-
-        </p>
-
-
-        <div class="signature">
-
-            With lots of love ❤️
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
 
 
 <script>
 
 /* =========================
-   PAGE NAVIGATION
+   CAKE SYSTEM
 ========================= */
 
-let scene = 1;
+let cakeCandlesOff = 0;
+let cakeCutDone = false;
 
 
-function go(n){
+/* Candle tap */
+function cakeCandle(el){
 
-    document
-        .getElementById("s" + scene)
-        .classList
-        .remove("active");
+  if(el.classList.contains("off")){
+    return;
+  }
 
+  /* Turn candle off */
+  el.classList.add("off");
 
-    document
-        .getElementById("s" + n)
-        .classList
-        .add("active");
-
-
-    scene = n;
+  cakeCandlesOff++;
 
 
-    for(
-        let i = 1;
-        i <= 8;
-        i++
-    ){
+  /* Cake shake */
+  const cake =
+    document.getElementById("cakeEmoji");
 
-        document
-            .getElementById("d" + i)
-            .classList
-            .toggle(
-                "on",
-                i === n
-            );
+  cake.classList.add("shake");
 
-    }
+  setTimeout(function(){
+
+    cake.classList.remove("shake");
+
+  },600);
 
 
-    if(n === 8){
+  /* All candles OFF */
+  if(cakeCandlesOff === 3){
 
-        confetti();
+    document.getElementById("cakeText")
+      .textContent =
+      "Wish made! ✨ Now cut your birthday cake 🎂";
 
-        startMusic();
 
-    }
+    document.getElementById("cutBtn")
+      .classList.remove("hidden");
+
+
+    document.getElementById("knife")
+      .classList.add("show");
+
+
+    /* Celebration */
+    confetti();
+
+
+    /* Birthday music */
+    startMusic();
+  }
 
 }
 
 
-
 /* =========================
-   ENVELOPE
+   CUT CAKE
 ========================= */
 
-let envOpened = false;
+function cutCake(){
+
+  if(cakeCutDone){
+    return;
+  }
+
+  cakeCutDone = true;
 
 
-function openEnvelope(){
-
-    if(envOpened) return;
-
-
-    envOpened = true;
+  /* Knife animation */
+  document.getElementById("knife")
+    .classList.add("cut");
 
 
-    document
-        .getElementById("env")
-        .classList
-        .add("open");
+  /* Cake animation */
+  document.getElementById("cakeEmoji")
+    .classList.add("cut");
 
 
-    document
-        .getElementById("envNote")
-        .innerHTML =
-        "A little birthday message... just for you. 💗";
+  /* Hide cut button */
+  document.getElementById("cutBtn")
+    .classList.add("hidden");
 
 
-    setTimeout(
-        () => go(3),
-        1500
+  /* Message */
+  document.getElementById("cakeText")
+    .textContent =
+    "Cake cut! 🎂❤️ Happy Birthday, Alara!";
+
+
+  document.getElementById("done")
+    .textContent =
+    "✨ The birthday cake is officially cut! ✨";
+
+
+  /* Big celebration */
+  cakeCelebration();
+
+
+  /* Show again button */
+  setTimeout(function(){
+
+    document.getElementById("againBtn")
+      .classList.remove("hidden");
+
+  },900);
+
+}
+
+
+/* =========================
+   CELEBRATION
+========================= */
+
+function cakeCelebration(){
+
+  const items = [
+    "🎉",
+    "✨",
+    "💗",
+    "🎀",
+    "🥳",
+    "🌷"
+  ];
+
+
+  for(let i = 0; i < 28; i++){
+
+    const e =
+      document.createElement("div");
+
+    e.className = "cake-spark";
+
+    e.textContent =
+      items[
+        Math.floor(
+          Math.random() * items.length
+        )
+      ];
+
+
+    e.style.left = "50%";
+    e.style.top = "43%";
+
+
+    e.style.setProperty(
+      "--dx",
+      (Math.random() * 260 - 130) + "px"
     );
 
-}
 
-
-
-/* =========================
-   BALLOONS
-========================= */
-
-let popped = 0;
-
-
-function pop(el,i){
-
-    if(
-        el.classList.contains("popped")
-    ) return;
-
-
-    el.classList.add("popped");
-
-
-    document
-        .getElementById("bw" + i)
-        .classList
-        .add("show");
-
-
-    popped++;
-
-
-    document
-        .getElementById("balloonStatus")
-        .textContent =
-        popped + " / 4 popped";
-
-
-    burst(el);
-
-
-    if(popped === 4){
-
-        document
-            .getElementById("balloonStatus")
-            .textContent =
-            "All four wishes found! 🎉";
-
-
-        document
-            .getElementById("balloonNext")
-            .classList
-            .remove("hidden");
-
-    }
-
-}
-
-
-
-function burst(el){
-
-    const r =
-        el.getBoundingClientRect();
-
-
-    [
-        "✨",
-        "💗",
-        "🎉"
-    ]
-    .forEach(
-        (x,k)=>{
-
-            const e =
-                document.createElement("div");
-
-
-            e.className =
-                "popburst";
-
-
-            e.textContent = x;
-
-
-            e.style.left =
-                (r.left + r.width/2) +
-                "px";
-
-
-            e.style.top =
-                (r.top + r.height/2) +
-                "px";
-
-
-            document.body.appendChild(e);
-
-
-            e.animate(
-
-                [
-                    {
-                        transform:
-                            "translate(0,0) scale(1)",
-
-                        opacity:1
-                    },
-
-                    {
-                        transform:
-                            `translate(
-                                ${Math.random()*90-45}px,
-                                ${Math.random()*80-40}px
-                            )
-                            scale(0)`,
-
-                        opacity:0
-                    }
-                ],
-
-                {
-                    duration:
-                        650 + 100*k,
-
-                    easing:
-                        "ease-out"
-                }
-
-            );
-
-
-            setTimeout(
-                ()=>e.remove(),
-                800
-            );
-
-        }
+    e.style.setProperty(
+      "--dy",
+      (Math.random() * 260 - 150) + "px"
     );
 
-}
+
+    document.body.appendChild(e);
 
 
+    setTimeout(function(){
 
-/* =========================
-   GIFT
-========================= */
+      e.remove();
 
-let giftOpened = false;
+    },2000);
 
-
-function openGift(){
-
-    if(giftOpened) return;
-
-
-    giftOpened = true;
-
-
-    document
-        .getElementById("gift")
-        .classList
-        .add("open");
-
-
-    document
-        .getElementById("giftNote")
-        .innerHTML =
-        "Inside: one tiny reminder that your birthday deserved something a little extra. 💝";
-
-
-    setTimeout(
-
-        ()=>document
-            .getElementById("giftNext")
-            .classList
-            .remove("hidden"),
-
-        650
-
-    );
+  }
 
 }
-
-
-
-/* =========================
-   REASONS
-========================= */
-
-const reasons = [
-
-    [
-        "🌷",
-        "Beautiful Days",
-
-        "I hope life gives you many calm, beautiful days that you can look back on with happiness."
-    ],
-
-    [
-        "✨",
-        "Big Dreams",
-
-        "May you always have the courage to dream big and the patience to reach those dreams."
-    ],
-
-    [
-        "🌙",
-        "Peace",
-
-        "I hope you always find a little peace, especially on the days when everything feels too loud."
-    ],
-
-    [
-        "🍀",
-        "Good Luck",
-
-        "May the right opportunities find you, and may good things arrive when you least expect them."
-    ],
-
-    [
-        "💗",
-        "Your Importance",
-
-        "Some people become important without needing a long explanation. You are one of those people to me."
-    ]
-
-];
-
-
-let ri = 0;
-
-
-function nextReason(){
-
-    ri++;
-
-
-    if(
-        ri >= reasons.length
-    ){
-
-        go(7);
-
-        return;
-
-    }
-
-
-    document
-        .getElementById("ri")
-        .textContent =
-        reasons[ri][0];
-
-
-    document
-        .getElementById("rt")
-        .textContent =
-        reasons[ri][1];
-
-
-    document
-        .getElementById("rx")
-        .textContent =
-        reasons[ri][2];
-
-
-    if(
-        ri === reasons.length - 1
-    ){
-
-        document
-            .getElementById("reasonBtn")
-            .textContent =
-            "One Last Surprise 🎂";
-
-    }
-
-}
-
-
-
-/* =========================
-   CANDLES
-========================= */
-
-let off = 0;
-
-
-function candle(el){
-
-    if(
-        el.classList.contains("off")
-    ) return;
-
-
-    el.classList.add("off");
-
-
-    off++;
-
-
-    if(off === 3){
-
-        document
-            .getElementById("candleText")
-            .textContent =
-            "Wish made. May this year bring you more happiness than you expected. ✨";
-
-
-        document
-            .getElementById("cakeNext")
-            .classList
-            .remove("hidden");
-
-
-        confetti();
-
-    }
-
-}
-
-
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
-function hearts(n=10){
-
-    for(
-        let i=0;
-        i<n;
-        i++
-    ){
-
-        const h =
-            document.createElement("div");
-
-
-        h.className =
-            "bgheart";
-
-
-        h.textContent =
-            Math.random() > .5
-            ? "❤️"
-            : "💗";
-
-
-        h.style.left =
-            Math.random()*100 +
-            "vw";
-
-
-        h.style.animationDelay =
-            Math.random()*4 +
-            "s";
-
-
-        h.style.animationDuration =
-            5 + Math.random()*4 +
-            "s";
-
-
-        document.body.appendChild(h);
-
-
-        setTimeout(
-            ()=>h.remove(),
-            10000
-        );
-
-    }
-
-}
-
-
-hearts(14);
-
 
 
 /* =========================
@@ -2278,66 +581,61 @@ hearts(14);
 
 function confetti(){
 
-    const a = [
-        "🎉",
-        "✨",
-        "💗",
-        "🌷",
-        "🎀",
-        "💕",
-        "🥳"
-    ];
+  const items = [
+    "🎉",
+    "✨",
+    "💗",
+    "🎀",
+    "🥳",
+    "🌷"
+  ];
 
 
-    for(
-        let i=0;
-        i<48;
-        i++
-    ){
+  for(let i = 0; i < 22; i++){
 
-        const e =
-            document.createElement("div");
+    const e =
+      document.createElement("div");
 
+    e.className = "cake-spark";
 
-        e.className =
-            "conf";
-
-
-        e.textContent =
-            a[
-                Math.floor(
-                    Math.random()*a.length
-                )
-            ];
+    e.textContent =
+      items[
+        Math.floor(
+          Math.random() * items.length
+        )
+      ];
 
 
-        e.style.left =
-            Math.random()*100 +
-            "vw";
+    e.style.left =
+      (Math.random() * 100) + "vw";
+
+    e.style.top = "-20px";
 
 
-        e.style.fontSize =
-            12 + Math.random()*18 +
-            "px";
+    e.style.setProperty(
+      "--dx",
+      (Math.random() * 180 - 90) + "px"
+    );
 
 
-        e.style.animationDuration =
-            2.5 + Math.random()*2.5 +
-            "s";
+    e.style.setProperty(
+      "--dy",
+      (Math.random() * 700 + 250) + "px"
+    );
 
 
-        document.body.appendChild(e);
+    document.body.appendChild(e);
 
 
-        setTimeout(
-            ()=>e.remove(),
-            6000
-        );
+    setTimeout(function(){
 
-    }
+      e.remove();
+
+    },2200);
+
+  }
 
 }
-
 
 
 /* =========================
@@ -2345,301 +643,307 @@ function confetti(){
 ========================= */
 
 let ac = null;
-
 let musicOn = false;
-
-let timer = null;
-
-let step = 0;
+let musicTimer = null;
+let musicIndex = 0;
 
 
-/*
-    Birthday-style melody.
-    Browser requires user interaction
-    before audio can play.
-*/
-
+/* Birthday-style melody */
 const melody = [
 
-    [264,.28],
-    [264,.28],
-    [297,.52],
-    [264,.52],
-    [352,.52],
-    [330,.82],
+  392,
+  392,
+  440,
+  392,
+  523,
+  494,
 
-    [264,.28],
-    [264,.28],
-    [297,.52],
-    [264,.52],
-    [396,.52],
-    [352,.82],
+  392,
+  392,
+  440,
+  392,
+  587,
+  523,
 
-    [264,.28],
-    [264,.28],
-    [528,.52],
-    [440,.52],
-    [352,.52],
-    [330,.52],
-    [297,.82]
+  392,
+  392,
+  784,
+  659,
+  523,
+  494,
+  440,
+
+  698,
+  698,
+  659,
+  523,
+  587,
+  523
 
 ];
 
 
-
+/* Audio */
 function audio(){
 
-    if(!ac){
+  if(!ac){
 
-        ac =
-            new(
-                window.AudioContext ||
-                window.webkitAudioContext
-            )();
+    ac =
+      new(
+        window.AudioContext ||
+        window.webkitAudioContext
+      )();
 
-    }
-
-
-    if(
-        ac.state === "suspended"
-    ){
-
-        ac.resume();
-
-    }
+  }
 
 
-    return ac;
+  if(ac.state === "suspended"){
 
+    ac.resume();
+
+  }
+
+
+  return ac;
 }
 
 
-
-function tone(
-    f,
-    d,
-    when,
-    type="sine",
-    vol=.10
+/* Play note */
+function note(
+  freq,
+  dur,
+  when,
+  type = "triangle",
+  vol = .10
 ){
 
-    const c =
-        audio();
+  const c = audio();
+
+  const o =
+    c.createOscillator();
+
+  const g =
+    c.createGain();
 
 
-    const o =
-        c.createOscillator();
+  o.type = type;
 
-
-    const g =
-        c.createGain();
-
-
-    o.type =
-        type;
-
-
-    o.frequency.setValueAtTime(
-        f,
-        when
-    );
-
-
-    g.gain.setValueAtTime(
-        .0001,
-        when
-    );
-
-
-    g.gain.exponentialRampToValueAtTime(
-        vol,
-        when + .025
-    );
-
-
-    g.gain.exponentialRampToValueAtTime(
-        .0001,
-        when + d
-    );
-
-
-    o.connect(g);
-
-
-    g.connect(
-        c.destination
-    );
-
-
-    o.start(
-        when
-    );
-
-
-    o.stop(
-        when + d + .03
-    );
-
-}
-
-
-
-function chord(
-    root,
+  o.frequency.setValueAtTime(
+    freq,
     when
-){
-
-    tone(
-        root,
-        .55,
-        when,
-        "triangle",
-        .055
-    );
+  );
 
 
-    tone(
-        root * 1.25,
-        .55,
-        when,
-        "triangle",
-        .045
-    );
+  g.gain.setValueAtTime(
+    .0001,
+    when
+  );
 
 
-    tone(
-        root * 1.5,
-        .55,
-        when,
-        "triangle",
-        .04
+  g.gain.exponentialRampToValueAtTime(
+    vol,
+    when + .018
+  );
+
+
+  g.gain.exponentialRampToValueAtTime(
+    .0001,
+    when + dur
+  );
+
+
+  o.connect(g);
+
+  g.connect(c.destination);
+
+
+  o.start(when);
+
+  o.stop(
+    when + dur + .03
+  );
+
+}
+
+
+/* Small beat */
+function kick(when){
+
+  const c = audio();
+
+  const o =
+    c.createOscillator();
+
+  const g =
+    c.createGain();
+
+
+  o.type = "sine";
+
+
+  o.frequency.setValueAtTime(
+    120,
+    when
+  );
+
+
+  o.frequency.exponentialRampToValueAtTime(
+    48,
+    when + .13
+  );
+
+
+  g.gain.setValueAtTime(
+    .0001,
+    when
+  );
+
+
+  g.gain.exponentialRampToValueAtTime(
+    .16,
+    when + .01
+  );
+
+
+  g.gain.exponentialRampToValueAtTime(
+    .0001,
+    when + .15
+  );
+
+
+  o.connect(g);
+
+  g.connect(c.destination);
+
+
+  o.start(when);
+
+  o.stop(
+    when + .17
+  );
+
+}
+
+
+/* Play melody */
+function playBar(){
+
+  if(!musicOn){
+    return;
+  }
+
+
+  const c = audio();
+
+  const now =
+    c.currentTime + .04;
+
+
+  const f =
+    melody[musicIndex];
+
+
+  note(
+    f,
+    .25,
+    now,
+    "triangle",
+    .10
+  );
+
+
+  note(
+    f * 2,
+    .18,
+    now,
+    "sine",
+    .03
+  );
+
+
+  if(musicIndex % 2 === 0){
+
+    kick(now);
+
+  }
+
+
+  musicIndex =
+    (musicIndex + 1)
+    % melody.length;
+
+
+  musicTimer =
+    setTimeout(
+      playBar,
+      310
     );
 
 }
 
 
-
-function musicLoop(){
-
-    if(!musicOn) return;
-
-
-    const c =
-        audio();
-
-
-    const n =
-        melody[step];
-
-
-    const now =
-        c.currentTime + .03;
-
-
-    tone(
-        n[0],
-        n[1],
-        now,
-        "square",
-        .065
-    );
-
-
-    if(
-        step % 4 === 0
-    ){
-
-        chord(
-            n[0]/2,
-            now
-        );
-
-    }
-
-
-    step =
-        (step + 1)
-        % melody.length;
-
-
-    timer =
-        setTimeout(
-            musicLoop,
-            (n[1] + .06)*1000
-        );
-
-}
-
-
-
+/* Start music */
 function startMusic(){
 
-    if(musicOn) return;
+  if(musicOn){
+    return;
+  }
 
 
-    audio();
+  audio();
+
+  musicOn = true;
+
+  musicIndex = 0;
 
 
-    musicOn = true;
+  document.getElementById("musicBtn")
+    .textContent = "🔊";
 
 
-    document
-        .getElementById("musicBtn")
-        .textContent =
-        "🔊";
+  document.getElementById("musicBtn")
+    .classList.add("on");
 
 
-    document
-        .getElementById("musicBtn")
-        .classList
-        .add("on");
-
-
-    musicLoop();
+  playBar();
 
 }
 
 
-
+/* Stop music */
 function stopMusic(){
 
-    musicOn = false;
+  musicOn = false;
+
+  clearTimeout(musicTimer);
 
 
-    clearTimeout(timer);
+  document.getElementById("musicBtn")
+    .textContent = "🎵";
 
 
-    document
-        .getElementById("musicBtn")
-        .textContent =
-        "🎵";
-
-
-    document
-        .getElementById("musicBtn")
-        .classList
-        .remove("on");
+  document.getElementById("musicBtn")
+    .classList.remove("on");
 
 }
 
 
-
+/* Music button */
 function toggleMusic(){
 
-    if(musicOn){
+  if(musicOn){
 
-        stopMusic();
+    stopMusic();
 
-    }else{
+  }else{
 
-        startMusic();
+    startMusic();
 
-    }
+  }
 
 }
 
 </script>
-
 
 </body>
 </html>
