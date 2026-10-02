@@ -2,725 +2,1084 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>For Alara ❤️</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
 }
 
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    overflow: hidden;
-    color: #5b3044;
-    background: #fff7f5;
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    color:#61384a;
+    background:#fff7f7;
 }
 
-/* ---------- GENERAL ---------- */
+.scene{
+    position:fixed;
+    inset:0;
+    padding:24px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-.scene {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.04);
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.03);
+
     transition:
-        opacity 0.8s ease,
-        transform 0.8s ease,
-        visibility 0.8s;
+        opacity .7s ease,
+        transform .7s ease,
+        visibility .7s;
 }
 
-.scene.active {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
+.scene.active{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
 }
 
-.content {
-    width: 100%;
-    max-width: 430px;
-    text-align: center;
-    position: relative;
-    z-index: 5;
+.content{
+    width:100%;
+    max-width:440px;
+    text-align:center;
+    position:relative;
+    z-index:5;
 }
 
-.small-text {
-    font-family: Arial, sans-serif;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    font-size: 11px;
-    color: #a66b7e;
-    margin-bottom: 15px;
+.eyebrow{
+    font:11px Arial,sans-serif;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#aa7185;
+    margin-bottom:12px;
 }
 
-.title {
-    font-size: clamp(38px, 11vw, 58px);
-    line-height: 1.05;
-    margin: 10px 0;
-    color: #793c58;
+h1{
+    margin:8px 0;
+    color:#7c3f59;
 }
 
-.subtitle {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-    color: #825d6c;
+.title{
+    font-size:clamp(39px,11vw,58px);
+    line-height:1.05;
 }
 
-.next-btn {
-    border: 0;
-    padding: 15px 27px;
-    border-radius: 50px;
-    background: #fff;
-    color: #9b4d70;
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    box-shadow: 0 10px 30px rgba(130, 65, 90, 0.16);
-    margin-top: 25px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+.sub{
+    font:15px Arial,sans-serif;
+    line-height:1.75;
+    color:#80606c;
 }
 
-.next-btn:active {
-    transform: scale(0.94);
+.btn{
+    border:0;
+    border-radius:50px;
+    padding:14px 25px;
+    margin-top:20px;
+
+    background:white;
+    color:#a04d70;
+
+    font:bold 15px Arial,sans-serif;
+
+    box-shadow:0 10px 30px rgba(100,45,70,.16);
+
+    cursor:pointer;
 }
 
-.next-btn:hover {
-    box-shadow: 0 14px 35px rgba(130, 65, 90, 0.22);
+.btn:active{
+    transform:scale(.95);
 }
 
-/* ---------- BACKGROUNDS ---------- */
+.hidden{
+    display:none!important;
+}
 
-#scene1 {
+
+/* BACKGROUNDS */
+
+#s1{
     background:
-        radial-gradient(circle at 15% 20%, #ffe2eb 0, transparent 30%),
-        radial-gradient(circle at 85% 80%, #e9ddff 0, transparent 35%),
-        #fff8f5;
+        radial-gradient(circle at 15% 15%,#ffe1ec,transparent 32%),
+        radial-gradient(circle at 90% 85%,#e8dcff,transparent 34%),
+        #fff8f6;
 }
 
-#scene2 {
+#s2{
     background:
-        radial-gradient(circle at 20% 20%, #ffe4ef 0, transparent 35%),
-        #fff8f7;
+        radial-gradient(circle at 50% 15%,#ffe5ee,transparent 40%),
+        #fff9f7;
 }
 
-#scene3 {
+#s3{
     background:
-        radial-gradient(circle at 50% 10%, #ffe4ef 0, transparent 40%),
-        #fffaf7;
+        linear-gradient(160deg,#fff6f8,#f7efff);
 }
 
-#scene4 {
+#s4{
     background:
-        linear-gradient(180deg, #fff5f8, #f8efff);
+        radial-gradient(circle at 50% 20%,#ffe5ef,transparent 43%),
+        #fff9f5;
 }
 
-#scene5 {
+#s5{
     background:
-        radial-gradient(circle at 50% 20%, #ffe6f0, transparent 40%),
-        #fff8f5;
+        linear-gradient(145deg,#fff5f8,#f4edff);
 }
 
-#scene6 {
+#s6{
     background:
-        linear-gradient(145deg, #fff6f8, #f5eeff);
+        radial-gradient(circle at 50% 20%,#ffe2ed,transparent 45%),
+        #fff9f7;
 }
 
-#scene7 {
+#s7{
     background:
-        radial-gradient(circle at 50% 30%, #ffe8ef, transparent 45%),
-        #fff7f4;
+        linear-gradient(150deg,#fff7f5,#f8edff);
 }
 
-#scene8 {
+#s8{
     background:
-        radial-gradient(circle at 50% 20%, #ffdfe9, transparent 45%),
-        #fff8f7;
+        radial-gradient(circle at 50% 20%,#ffe0eb,transparent 48%),
+        #fff7f6;
 }
 
-/* ---------- FLOATING HEARTS ---------- */
 
-.background-heart {
-    position: fixed;
-    font-size: 20px;
-    opacity: 0.25;
-    animation: drift 8s linear infinite;
-    pointer-events: none;
+/* FLOATING HEARTS */
+
+.bgheart{
+    position:fixed;
+    bottom:-30px;
+
+    font-size:20px;
+    opacity:.25;
+
+    pointer-events:none;
+
+    animation:floatUp 7s linear forwards;
+
+    z-index:1;
 }
 
-@keyframes drift {
-    0% {
-        transform: translateY(110vh) rotate(0);
-        opacity: 0;
+@keyframes floatUp{
+
+    to{
+        transform:
+            translateY(-115vh)
+            rotate(360deg);
+
+        opacity:0;
     }
-    20% {
-        opacity: 0.3;
-    }
-    100% {
-        transform: translateY(-15vh) rotate(360deg);
-        opacity: 0;
-    }
+
 }
 
-/* ---------- ENVELOPE ---------- */
 
-.envelope-wrap {
-    width: 280px;
-    height: 205px;
-    margin: 30px auto;
-    position: relative;
-    cursor: pointer;
-    perspective: 800px;
+/* ENVELOPE */
+
+.envelope-wrap{
+    width:285px;
+    height:210px;
+
+    margin:30px auto 18px;
+
+    position:relative;
+
+    cursor:pointer;
+
+    perspective:800px;
 }
 
-.envelope {
-    position: absolute;
-    inset: 0;
-    background: #d98da6;
-    border-radius: 7px;
-    box-shadow: 0 20px 40px rgba(100, 50, 70, 0.2);
-    overflow: visible;
+.envelope{
+    position:absolute;
+    inset:0;
+
+    background:#d789a4;
+
+    border-radius:7px;
+
+    box-shadow:
+        0 20px 45px rgba(100,50,70,.2);
+}
+
+.env-letter{
+    position:absolute;
+
+    width:232px;
+    height:155px;
+
+    left:26px;
+    top:26px;
+
+    background:#fffdf8;
+
+    border-radius:5px;
+
+    z-index:2;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.08);
+
+    transition:transform .9s ease;
+
+    padding:16px 10px;
+
+    font:13px Arial,sans-serif;
+
+    color:#8a5b6c;
+}
+
+.flap{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:0;
+    height:0;
+
+    border-left:142px solid transparent;
+    border-right:142px solid transparent;
+    border-top:108px solid #e5a0b5;
+
+    transform-origin:top center;
+
+    transition:transform .8s ease;
+
+    z-index:6;
 }
 
 .envelope:before,
-.envelope:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    z-index: 4;
+.envelope:after{
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-style:solid;
+
+    z-index:4;
 }
 
-.envelope:before {
-    left: 0;
-    border-width: 0 0 205px 140px;
-    border-color: transparent transparent #c97994 transparent;
+.envelope:before{
+    left:0;
+
+    border-width:
+        0
+        0
+        210px
+        142px;
+
+    border-color:
+        transparent
+        transparent
+        #c97692
+        transparent;
 }
 
-.envelope:after {
-    right: 0;
-    border-width: 205px 0 0 140px;
-    border-color: transparent transparent transparent #c97994;
+.envelope:after{
+    right:0;
+
+    border-width:
+        210px
+        0
+        0
+        142px;
+
+    border-color:
+        transparent
+        transparent
+        transparent
+        #c97692;
 }
 
-.flap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 140px solid transparent;
-    border-right: 140px solid transparent;
-    border-top: 105px solid #e7a2b7;
-    transform-origin: top center;
-    transition: transform 0.8s ease;
-    z-index: 6;
+.seal{
+    position:absolute;
+
+    z-index:8;
+
+    width:56px;
+    height:56px;
+
+    border-radius:50%;
+
+    background:#a44d6e;
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    left:calc(50% - 28px);
+    top:83px;
+
+    font-size:23px;
+
+    box-shadow:
+        0 5px 15px rgba(90,40,60,.2);
+
+    transition:.3s;
 }
 
-.envelope.open .flap {
-    transform: rotateX(180deg);
+.envelope.open .flap{
+    transform:rotateX(180deg);
 }
 
-.letter {
-    position: absolute;
-    width: 230px;
-    height: 155px;
-    background: #fffdf9;
-    left: 25px;
-    top: 25px;
-    border-radius: 5px;
-    z-index: 2;
-    transition: transform 0.9s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+.envelope.open .env-letter{
+    transform:translateY(-78px);
 }
 
-.envelope.open .letter {
-    transform: translateY(-75px);
+.envelope.open .seal{
+    opacity:0;
 }
 
-.seal {
-    position: absolute;
-    z-index: 8;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background: #a64f70;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    left: calc(50% - 27px);
-    top: 82px;
-    font-size: 24px;
-    box-shadow: 0 5px 15px rgba(90,40,60,0.2);
-    transition: opacity 0.4s;
+.open-note{
+    background:rgba(255,255,255,.8);
+
+    border-radius:18px;
+
+    padding:15px;
+
+    font:14px Arial,sans-serif;
+
+    color:#7d5967;
+
+    margin:8px auto;
+
+    max-width:350px;
 }
 
-.envelope.open .seal {
-    opacity: 0;
+
+/* BIRTHDAY */
+
+.cakeemoji{
+    font-size:92px;
+
+    animation:
+        bounce 1.7s
+        ease-in-out
+        infinite;
 }
 
-/* ---------- BIRTHDAY ---------- */
+@keyframes bounce{
 
-.birthday-cake {
-    font-size: 100px;
-    animation: cakeBounce 2s ease-in-out infinite;
-    margin: 10px 0;
-}
-
-@keyframes cakeBounce {
-    0%, 100% {
-        transform: translateY(0);
+    50%{
+        transform:translateY(-10px);
     }
-    50% {
-        transform: translateY(-10px);
+
+}
+
+.script{
+    font-family:
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    font-size:68px;
+
+    color:#bf557c;
+
+    margin:0;
+}
+
+
+/* BALLOONS */
+
+.balloon-stage{
+    height:310px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:flex-start;
+
+    gap:9px;
+
+    padding-top:25px;
+}
+
+.balloon-item{
+    width:68px;
+    height:245px;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+.balloon{
+    width:58px;
+    height:76px;
+
+    border-radius:
+        50%
+        50%
+        47%
+        47%;
+
+    position:absolute;
+
+    top:0;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.balloon:after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:73px;
+
+    width:1.5px;
+    height:125px;
+
+    background:#a98591;
+}
+
+.balloon:before{
+    content:"";
+
+    position:absolute;
+
+    left:calc(50% - 5px);
+
+    bottom:-4px;
+
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+
+    border-top:8px solid currentColor;
+}
+
+.b1{
+    background:#e993af;
+}
+
+.b2{
+    background:#bba1e6;
+}
+
+.b3{
+    background:#f1bd82;
+}
+
+.b4{
+    background:#df89a9;
+}
+
+.balloon.popped{
+    animation:
+        pop .35s forwards;
+}
+
+@keyframes pop{
+
+    50%{
+        transform:scale(1.35);
     }
-}
 
-.name {
-    font-family: "Brush Script MT", cursive;
-    font-size: clamp(55px, 16vw, 82px);
-    color: #c05279;
-    margin: 0;
-}
-
-/* ---------- BALLOONS ---------- */
-
-.balloons {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 10px;
-    height: 270px;
-    margin: 10px auto;
-}
-
-.balloon {
-    width: 58px;
-    height: 75px;
-    border-radius: 50% 50% 47% 47%;
-    position: relative;
-    cursor: pointer;
-    animation: balloonFloat 2.2s ease-in-out infinite;
-}
-
-.balloon:nth-child(1) {
-    background: #e89ab2;
-    transform: rotate(-7deg);
-}
-
-.balloon:nth-child(2) {
-    background: #bfa5e8;
-    animation-delay: .3s;
-}
-
-.balloon:nth-child(3) {
-    background: #f2c18c;
-    animation-delay: .6s;
-}
-
-.balloon:nth-child(4) {
-    background: #df91ad;
-    animation-delay: .9s;
-}
-
-.balloon:before {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 115px;
-    background: #b78b98;
-    left: 50%;
-    top: 73px;
-}
-
-.balloon:after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: calc(50% - 5px);
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 9px solid currentColor;
-}
-
-@keyframes balloonFloat {
-    0%, 100% {
-        margin-bottom: 0;
+    100%{
+        transform:scale(0);
+        opacity:0;
     }
-    50% {
-        margin-bottom: 12px;
-    }
+
 }
 
-.balloon.popped {
-    animation: pop 0.35s forwards;
+.balloon-word{
+    position:absolute;
+
+    top:90px;
+
+    width:72px;
+
+    min-height:46px;
+
+    opacity:0;
+
+    transform:
+        translateY(-8px)
+        scale(.8);
+
+    transition:.45s;
+
+    font:bold 12px Arial,sans-serif;
+
+    letter-spacing:1.5px;
+
+    color:#9a6075;
 }
 
-@keyframes pop {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.35);
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
+.balloon-word.show{
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
 }
 
-.balloon-message {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #8c6372;
-    margin-top: 5px;
+.popburst{
+    position:fixed;
+
+    z-index:100;
+
+    font-size:19px;
+
+    pointer-events:none;
 }
 
-/* ---------- GIFT ---------- */
 
-.gift-box {
-    width: 180px;
-    height: 140px;
-    margin: 55px auto 25px;
-    position: relative;
-    cursor: pointer;
+/* GIFT */
+
+.gift{
+    width:190px;
+    height:170px;
+
+    margin:40px auto 10px;
+
+    position:relative;
+
+    cursor:pointer;
 }
 
-.gift-body {
-    position: absolute;
-    bottom: 0;
-    width: 180px;
-    height: 105px;
-    background: #d9829e;
-    border-radius: 5px;
-    box-shadow: 0 18px 35px rgba(110, 50, 70, 0.18);
+.gbody{
+    position:absolute;
+
+    bottom:0;
+    left:5px;
+
+    width:180px;
+    height:112px;
+
+    background:#d67f9d;
+
+    border-radius:5px;
+
+    box-shadow:
+        0 18px 35px
+        rgba(100,50,70,.18);
 }
 
-.gift-lid {
-    position: absolute;
-    width: 195px;
-    height: 38px;
-    left: -7px;
-    top: 12px;
-    background: #c96e8d;
-    border-radius: 5px;
-    transition: transform 0.7s ease;
-    z-index: 3;
+.glid{
+    position:absolute;
+
+    top:35px;
+    left:0;
+
+    width:190px;
+    height:40px;
+
+    background:#c86f8e;
+
+    border-radius:5px;
+
+    z-index:5;
+
+    transition:.75s;
 }
 
-.gift-ribbon-v {
-    position: absolute;
-    width: 28px;
-    height: 100%;
-    left: 76px;
-    background: #f5d3dd;
+.ribbonV{
+    position:absolute;
+
+    left:76px;
+    top:0;
+
+    width:29px;
+    height:100%;
+
+    background:#f7d9e2;
 }
 
-.gift-ribbon-h {
-    position: absolute;
-    height: 25px;
-    width: 100%;
-    top: 48px;
-    background: #f5d3dd;
+.ribbonH{
+    position:absolute;
+
+    left:0;
+    top:49px;
+
+    width:100%;
+    height:24px;
+
+    background:#f7d9e2;
 }
 
-.gift-bow {
-    position: absolute;
-    top: -18px;
-    left: 68px;
-    z-index: 5;
-    font-size: 50px;
+.bow{
+    position:absolute;
+
+    top:0;
+    left:58px;
+
+    font-size:52px;
+
+    z-index:7;
+
+    transition:.75s;
 }
 
-.gift-box.open .gift-lid {
-    transform: translateY(-65px) rotate(-7deg);
+.gift.open .glid{
+    transform:
+        translateY(-75px)
+        rotate(-6deg);
 }
 
-.gift-box.open .gift-bow {
-    animation: bowUp .8s ease forwards;
+.gift.open .bow{
+    transform:translateY(-78px);
+
+    opacity:0;
 }
 
-@keyframes bowUp {
-    to {
-        transform: translateY(-65px);
-        opacity: 0;
-    }
+.gift-inside{
+    position:absolute;
+
+    z-index:4;
+
+    left:20px;
+    top:22px;
+
+    width:150px;
+    height:95px;
+
+    opacity:0;
+
+    transform:translateY(18px);
+
+    transition:.7s;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
 }
 
-/* ---------- REASONS ---------- */
+.gift.open .gift-inside{
+    opacity:1;
 
-.reason-card {
-    background: rgba(255,255,255,0.75);
-    border: 1px solid rgba(180,120,145,0.15);
-    border-radius: 25px;
-    padding: 30px 22px;
-    box-shadow: 0 15px 40px rgba(120,70,90,0.10);
-    min-height: 240px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    transform:translateY(-4px);
 }
 
-.reason-icon {
-    font-size: 55px;
-    margin-bottom: 15px;
+.gift-note{
+    background:rgba(255,255,255,.8);
+
+    border-radius:18px;
+
+    padding:14px;
+
+    font:14px Arial,sans-serif;
+
+    color:#7d5967;
+
+    max-width:350px;
+
+    margin:auto;
 }
 
-.reason-title {
-    font-size: 24px;
-    color: #8a4560;
-    margin-bottom: 12px;
+
+/* FUNNY */
+
+.funny{
+    margin:14px auto;
+
+    padding:12px 15px;
+
+    max-width:360px;
+
+    border-radius:18px;
+
+    background:#fff0f5;
+
+    font:13px Arial,sans-serif;
+
+    color:#8d5b6b;
 }
 
-.reason-text {
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    color: #805f6c;
+
+/* REASONS */
+
+.reason-card{
+    background:rgba(255,255,255,.8);
+
+    border-radius:25px;
+
+    padding:28px 20px;
+
+    box-shadow:
+        0 16px 45px
+        rgba(100,50,70,.1);
+
+    min-height:250px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
 }
 
-/* ---------- CAKE ---------- */
-
-.cake-area {
-    margin: 25px auto;
-    position: relative;
-    width: 260px;
-    height: 240px;
+.reason-icon{
+    font-size:53px;
 }
 
-.cake-body {
-    position: absolute;
-    bottom: 20px;
-    left: 30px;
-    width: 200px;
-    height: 100px;
-    background: #e9a5b7;
-    border-radius: 10px 10px 18px 18px;
-    box-shadow: 0 15px 30px rgba(100,50,70,0.15);
+.reason-title{
+    font-size:24px;
+
+    color:#89445f;
+
+    margin:10px;
 }
 
-.cake-cream {
-    position: absolute;
-    left: 30px;
-    bottom: 100px;
-    width: 200px;
-    height: 28px;
-    background: #fff6f1;
-    border-radius: 20px;
+.reason-text{
+    font:15px Arial,sans-serif;
+
+    line-height:1.75;
+
+    color:#7d5d69;
 }
 
-.candle {
-    position: absolute;
-    bottom: 128px;
-    width: 12px;
-    height: 55px;
-    background: #d27c99;
-    border-radius: 4px;
-    cursor: pointer;
+
+/* CAKE */
+
+.cakebox{
+    width:280px;
+
+    height:270px;
+
+    position:relative;
+
+    margin:15px auto;
 }
 
-.candle:nth-child(1) {
-    left: 75px;
+.cbody{
+    position:absolute;
+
+    left:35px;
+    bottom:25px;
+
+    width:210px;
+    height:105px;
+
+    background:#e6a0b5;
+
+    border-radius:
+        10px
+        10px
+        18px
+        18px;
+
+    box-shadow:
+        0 14px 28px
+        rgba(100,50,70,.15);
 }
 
-.candle:nth-child(2) {
-    left: 124px;
+.cream{
+    position:absolute;
+
+    left:35px;
+    bottom:105px;
+
+    width:210px;
+    height:30px;
+
+    background:#fff7f0;
+
+    border-radius:20px;
 }
 
-.candle:nth-child(3) {
-    left: 173px;
+.candle{
+    position:absolute;
+
+    bottom:132px;
+
+    width:13px;
+    height:58px;
+
+    background:#cb7795;
+
+    border-radius:4px;
+
+    cursor:pointer;
+
+    z-index:3;
 }
 
-.flame {
-    position: absolute;
-    width: 18px;
-    height: 27px;
-    background: #ffc85b;
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
-    left: -3px;
-    top: -25px;
-    box-shadow: 0 0 18px #ffc85b;
-    animation: flame 0.7s ease-in-out infinite alternate;
+.candle:nth-child(1){
+    left:88px;
 }
 
-@keyframes flame {
-    from {
-        transform: rotate(-45deg) scale(1);
-    }
-    to {
-        transform: rotate(-45deg) scale(1.12);
-    }
+.candle:nth-child(2){
+    left:134px;
 }
 
-.candle.off .flame {
-    display: none;
+.candle:nth-child(3){
+    left:180px;
 }
 
-.candle.off:after {
-    content: "♡";
-    position: absolute;
-    color: #bd7790;
-    top: -25px;
-    left: -2px;
+.flame{
+    position:absolute;
+
+    width:18px;
+    height:27px;
+
+    left:-2.5px;
+    top:-26px;
+
+    background:#ffc65a;
+
+    border-radius:
+        50%
+        50%
+        50%
+        0;
+
+    transform:rotate(-45deg);
+
+    box-shadow:
+        0 0 18px #ffc65a;
+
+    animation:
+        flicker .55s
+        infinite alternate;
 }
 
-/* ---------- LETTER ---------- */
+@keyframes flicker{
 
-.letter-card {
-    background: rgba(255,255,255,0.8);
-    border-radius: 25px;
-    padding: 28px 23px;
-    max-height: 65vh;
-    overflow-y: auto;
-    box-shadow: 0 18px 50px rgba(100,50,70,0.12);
-}
-
-.letter-card p {
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-    line-height: 1.85;
-    color: #765865;
-}
-
-.signature {
-    font-family: "Brush Script MT", cursive;
-    font-size: 32px;
-    color: #b34f76;
-    margin-top: 20px;
-}
-
-/* ---------- FINAL ---------- */
-
-.final-heart {
-    font-size: 100px;
-    animation: heartbeat 1.2s infinite;
-}
-
-@keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-    15% {
-        transform: scale(1.15);
-    }
-    30% {
-        transform: scale(1);
-    }
-    45% {
-        transform: scale(1.12);
-    }
-}
-
-/* ---------- MUSIC ---------- */
-
-.music-btn {
-    position: fixed;
-    top: 18px;
-    right: 18px;
-    width: 46px;
-    height: 46px;
-    border: 0;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.8);
-    color: #9b4d70;
-    font-size: 20px;
-    z-index: 100;
-    box-shadow: 0 7px 20px rgba(80,40,60,0.12);
-    cursor: pointer;
-}
-
-/* ---------- PROGRESS ---------- */
-
-.progress {
-    position: fixed;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 7px;
-    z-index: 100;
-}
-
-.dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgba(120,70,90,0.2);
-    transition: 0.3s;
-}
-
-.dot.active {
-    width: 22px;
-    border-radius: 10px;
-    background: #b65c7d;
-}
-
-/* ---------- CONFETTI ---------- */
-
-.confetti {
-    position: fixed;
-    top: -20px;
-    pointer-events: none;
-    z-index: 200;
-    animation: confettiFall 4s linear forwards;
-}
-
-@keyframes confettiFall {
-    to {
+    to{
         transform:
-            translateY(110vh)
+            rotate(-45deg)
+            scale(1.13);
+    }
+
+}
+
+.candle.off .flame{
+    display:none;
+}
+
+
+/* LETTER */
+
+.letter-card{
+    background:rgba(255,255,255,.83);
+
+    border-radius:24px;
+
+    padding:24px 20px;
+
+    max-height:63vh;
+
+    overflow:auto;
+
+    box-shadow:
+        0 18px 50px
+        rgba(100,50,70,.12);
+}
+
+.letter-card p{
+    font:15px Arial,sans-serif;
+
+    line-height:1.85;
+
+    color:#765865;
+
+    text-align:left;
+}
+
+.signature{
+    font:
+        32px
+        "Brush Script MT",
+        "Segoe Script",
+        cursive;
+
+    color:#b34f76;
+}
+
+
+/* FINAL HEART */
+
+.finalheart{
+    font-size:96px;
+
+    animation:
+        heart 1.2s infinite;
+}
+
+@keyframes heart{
+
+    15%{
+        transform:scale(1.16);
+    }
+
+    30%{
+        transform:scale(1);
+    }
+
+    45%{
+        transform:scale(1.1);
+    }
+
+}
+
+
+/* MUSIC */
+
+.music{
+    position:fixed;
+
+    right:16px;
+    top:16px;
+
+    z-index:500;
+
+    width:48px;
+    height:48px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.85);
+
+    font-size:20px;
+
+    color:#9b4d70;
+
+    box-shadow:
+        0 8px 22px
+        rgba(70,30,50,.12);
+}
+
+.music.on{
+    animation:
+        spin 3s linear infinite;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* PROGRESS */
+
+.progress{
+    position:fixed;
+
+    bottom:15px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:6px;
+
+    z-index:500;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#d7b9c5;
+
+    transition:.3s;
+}
+
+.dot.on{
+    width:21px;
+
+    border-radius:10px;
+
+    background:#ad5577;
+}
+
+
+/* CONFETTI */
+
+.conf{
+    position:fixed;
+
+    top:-30px;
+
+    z-index:900;
+
+    pointer-events:none;
+
+    animation:
+        fall 4s linear forwards;
+}
+
+@keyframes fall{
+
+    to{
+        transform:
+            translateY(115vh)
             rotate(720deg);
-        opacity: 0;
+
+        opacity:0;
     }
+
 }
 
-/* ---------- MOBILE ---------- */
 
-@media (max-width: 380px) {
+/* MOBILE */
 
-    .scene {
-        padding: 18px;
+@media(max-width:390px){
+
+    .scene{
+        padding:17px 13px;
     }
 
-    .title {
-        font-size: 36px;
+    .envelope-wrap{
+        transform:scale(.87);
+
+        margin-top:8px;
     }
 
-    .envelope-wrap {
-        transform: scale(0.85);
-        margin-top: 10px;
-        margin-bottom: 0;
+    .balloon-stage{
+        transform:scale(.88);
+
+        margin-top:-10px;
     }
 
-    .balloons {
-        transform: scale(0.85);
+    .gift{
+        transform:scale(.9);
+
+        margin-top:20px;
     }
 
-    .letter-card {
-        padding: 22px 18px;
+    .letter-card{
+        max-height:60vh;
     }
+
 }
-
 </style>
 </head>
 
@@ -730,7 +1089,11 @@ body {
 
 <!-- MUSIC BUTTON -->
 
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+<button
+    class="music"
+    id="musicBtn"
+    onclick="toggleMusic()"
+>
     🎵
 </button>
 
@@ -738,493 +1101,937 @@ body {
 <!-- PROGRESS -->
 
 <div class="progress">
-    <div class="dot active" id="dot1"></div>
-    <div class="dot" id="dot2"></div>
-    <div class="dot" id="dot3"></div>
-    <div class="dot" id="dot4"></div>
-    <div class="dot" id="dot5"></div>
-    <div class="dot" id="dot6"></div>
-    <div class="dot" id="dot7"></div>
-    <div class="dot" id="dot8"></div>
+
+    <span class="dot on" id="d1"></span>
+
+    <span class="dot" id="d2"></span>
+
+    <span class="dot" id="d3"></span>
+
+    <span class="dot" id="d4"></span>
+
+    <span class="dot" id="d5"></span>
+
+    <span class="dot" id="d6"></span>
+
+    <span class="dot" id="d7"></span>
+
+    <span class="dot" id="d8"></span>
+
 </div>
 
 
 <!-- SCENE 1 -->
 
-<section class="scene active" id="scene1">
+<section
+    class="scene active"
+    id="s1"
+>
 
-    <div class="content">
+<div class="content">
 
-        <div class="small-text">
-            A little surprise for you
-        </div>
-
-        <div style="font-size:75px; margin:10px;">
-            🌸
-        </div>
-
-        <h1 class="title">
-            A Special Day<br>Is Here
-        </h1>
-
-        <p class="subtitle">
-            Today is not just another day...
-            <br>
-            It is the day someone very special was born.
-        </p>
-
-        <button class="next-btn" onclick="goTo(2)">
-            Begin The Surprise ✨
-        </button>
-
+    <div class="eyebrow">
+        A little surprise
     </div>
+
+
+    <div style="font-size:76px">
+        🌷
+    </div>
+
+
+    <h1 class="title">
+        A Special Day<br>
+        Is Here ✨
+    </h1>
+
+
+    <p class="sub">
+
+        Today belongs to someone
+        very important.
+
+        <br>
+
+        And this little surprise
+        has only one name...
+
+    </p>
+
+
+    <button
+        class="btn"
+        onclick="go(2);startMusic()"
+    >
+
+        Open My Surprise 💌
+
+    </button>
+
+</div>
 
 </section>
 
 
-<!-- SCENE 2 -->
 
-<section class="scene" id="scene2">
+<!-- SCENE 2 ENVELOPE -->
 
-    <div class="content">
+<section
+    class="scene"
+    id="s2"
+>
 
-        <div class="small-text">
-            Something special
-        </div>
+<div class="content">
 
-        <h2 style="color:#8b4960;">
-            This is for you, Alara 💌
-        </h2>
+    <div class="eyebrow">
+        Just for Alara
+    </div>
 
-        <div class="envelope-wrap" id="envelope"
-             onclick="openEnvelope()">
 
-            <div class="envelope">
+    <h1>
+        There is a little letter for you 💗
+    </h1>
 
-                <div class="letter"></div>
 
-                <div class="flap"></div>
+    <div
+        class="envelope-wrap"
+        id="env"
+        onclick="openEnvelope()"
+    >
 
-                <div class="seal">
-                    ❤️
-                </div>
+        <div class="envelope">
 
+            <div class="env-letter">
+
+                A tiny message
+                is waiting inside...
+
+                <br><br>
+
+                — Open me 💕
+
+            </div>
+
+
+            <div class="flap"></div>
+
+
+            <div class="seal">
+                ❤️
             </div>
 
         </div>
 
-        <p class="subtitle" id="envelopeHint">
-            Tap the heart to open your letter
-        </p>
+    </div>
+
+
+    <div
+        class="open-note"
+        id="envNote"
+    >
+
+        Tap the heart seal.
+        Don't be shy 😌
 
     </div>
 
+</div>
+
 </section>
+
 
 
 <!-- SCENE 3 -->
 
-<section class="scene" id="scene3">
+<section
+    class="scene"
+    id="s3"
+>
 
-    <div class="content">
+<div class="content">
 
-        <div class="birthday-cake">
-            🎂
-        </div>
+    <div class="cakeemoji">
+        🎂
+    </div>
 
-        <div class="small-text">
-            Today is your day
-        </div>
 
-        <div class="name">
-            Alara
-        </div>
+    <div class="eyebrow">
+        The birthday girl
+    </div>
 
-        <h1 style="color:#843f5d;">
-            Happy Birthday ❤️
-        </h1>
 
-        <p class="subtitle">
-            To the person who means more to me
-            than words can ever explain.
-        </p>
+    <div class="script">
+        Alara
+    </div>
 
-        <button class="next-btn" onclick="goTo(4)">
-            There's More 💕
-        </button>
+
+    <h1>
+        Happy Birthday ❤️
+    </h1>
+
+
+    <p class="sub">
+
+        I hope this little corner
+        of the internet gives you
+        at least one reason to smile today.
+
+    </p>
+
+
+    <div class="funny">
+
+        P.S. I spent way too much time
+        making this.
+
+        So please pretend
+        it was effortless. 😂
 
     </div>
+
+
+    <button
+        class="btn"
+        onclick="go(4)"
+    >
+
+        Okay, There Is More 👀
+
+    </button>
+
+</div>
 
 </section>
 
 
-<!-- SCENE 4 -->
 
-<section class="scene" id="scene4">
+<!-- SCENE 4 BALLOONS -->
 
-    <div class="content">
+<section
+    class="scene"
+    id="s4"
+>
 
-        <div class="small-text">
-            A little birthday game
-        </div>
+<div class="content">
 
-        <h1 style="color:#86445e;">
-            Pop The Balloons 🎈
-        </h1>
-
-        <p class="balloon-message" id="balloonText">
-            Tap all four balloons
-        </p>
-
-        <div class="balloons">
-
-            <div class="balloon"
-                 onclick="popBalloon(this)"></div>
-
-            <div class="balloon"
-                 onclick="popBalloon(this)"></div>
-
-            <div class="balloon"
-                 onclick="popBalloon(this)"></div>
-
-            <div class="balloon"
-                 onclick="popBalloon(this)"></div>
-
-        </div>
-
-        <button class="next-btn hidden" id="balloonNext"
-                onclick="goTo(5)">
-            Continue 🎁
-        </button>
-
+    <div class="eyebrow">
+        Tiny birthday challenge
     </div>
 
-</section>
+
+    <h1>
+        Pop the Balloons 🎈
+    </h1>
 
 
-<!-- SCENE 5 -->
+    <p class="sub">
 
-<section class="scene" id="scene5">
+        Each one is hiding
+        a little wish.
 
-    <div class="content">
+        <br>
 
-        <div class="small-text">
-            I got something for you
-        </div>
+        Tap them all.
 
-        <h1 style="color:#86445e;">
-            A Little Gift 🎁
-        </h1>
-
-        <div class="gift-box"
-             id="gift"
-             onclick="openGift()">
-
-            <div class="gift-bow">
-                🎀
-            </div>
-
-            <div class="gift-lid"></div>
-
-            <div class="gift-body">
-
-                <div class="gift-ribbon-v"></div>
-
-                <div class="gift-ribbon-h"></div>
-
-            </div>
-
-        </div>
-
-        <p class="subtitle" id="giftText">
-            Tap the gift to open it
-        </p>
-
-        <button class="next-btn hidden"
-                id="giftNext"
-                onclick="goTo(6)">
-            See What's Inside 💗
-        </button>
-
-    </div>
-
-</section>
+    </p>
 
 
-<!-- SCENE 6 -->
-
-<section class="scene" id="scene6">
-
-    <div class="content">
-
-        <div class="small-text">
-            There are so many reasons
-        </div>
-
-        <h1 style="color:#86445e;">
-            Reasons I Love You 💗
-        </h1>
-
-        <div class="reason-card">
-
-            <div class="reason-icon" id="reasonIcon">
-                🌸
-            </div>
-
-            <div class="reason-title" id="reasonTitle">
-                Your Smile
-            </div>
-
-            <div class="reason-text" id="reasonText">
-                Your smile has a way of making
-                even an ordinary day feel beautiful.
-            </div>
-
-        </div>
-
-        <button class="next-btn"
-                onclick="nextReason()"
-                id="reasonButton">
-            Another Reason 💕
-        </button>
-
-    </div>
-
-</section>
+    <div class="balloon-stage">
 
 
-<!-- SCENE 7 -->
+        <!-- BALLOON 1 -->
 
-<section class="scene" id="scene7">
+        <div class="balloon-item">
 
-    <div class="content">
-
-        <div class="small-text">
-            Make a wish
-        </div>
-
-        <h1 style="color:#86445e;">
-            Your Birthday Cake 🎂
-        </h1>
-
-        <div class="cake-area">
-
-            <div class="candle" onclick="blowCandle(this)">
-                <div class="flame"></div>
-            </div>
-
-            <div class="candle" onclick="blowCandle(this)">
-                <div class="flame"></div>
-            </div>
-
-            <div class="candle" onclick="blowCandle(this)">
-                <div class="flame"></div>
-            </div>
-
-            <div class="cake-cream"></div>
-
-            <div class="cake-body"></div>
-
-        </div>
-
-        <p class="subtitle" id="candleText">
-            Tap each candle to make a wish 🕯️
-        </p>
-
-        <button class="next-btn hidden"
-                id="cakeNext"
-                onclick="goTo(8)">
-            Make Your Wish 💫
-        </button>
-
-    </div>
-
-</section>
+            <div
+                class="balloon b1"
+                onclick="pop(this,0)"
+            ></div>
 
 
-<!-- SCENE 8 -->
+            <div
+                class="balloon-word"
+                id="bw0"
+            >
 
-<section class="scene" id="scene8">
-
-    <div class="content">
-
-        <div class="final-heart">
-            ❤️
-        </div>
-
-        <div class="small-text">
-            One last thing
-        </div>
-
-        <h1 class="title">
-            For My Alara
-        </h1>
-
-        <div class="letter-card">
-
-            <p>
-                Alara,
-                <br><br>
-
-                Happy Birthday to the person who is
-                incredibly important to me.
-                You are not just someone special in my life —
-                you are a beautiful part of my world.
-                ❤️
-                <br><br>
-
-                I hope this new year of your life brings
-                you endless smiles, beautiful memories,
-                peace, success and all the happiness
-                your heart deserves.
-                <br><br>
-
-                I may not always have the perfect words,
-                but one thing I know for sure:
-                you mean so much to me.
-                <br><br>
-
-                Today, I just want you to smile,
-                enjoy your day and remember that
-                someone made this little world
-                especially for you.
-                💕
-                <br><br>
-
-                Happy Birthday, my jaan.
+                LOVE
                 <br>
-                You are truly my everything.
                 ❤️
-            </p>
 
-            <div class="signature">
-                Always yours ❤️
+            </div>
+
+        </div>
+
+
+
+        <!-- BALLOON 2 -->
+
+        <div class="balloon-item">
+
+            <div
+                class="balloon b2"
+                onclick="pop(this,1)"
+            ></div>
+
+
+            <div
+                class="balloon-word"
+                id="bw1"
+            >
+
+                PEACE
+                <br>
+                🌸
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BALLOON 3 -->
+
+        <div class="balloon-item">
+
+            <div
+                class="balloon b3"
+                onclick="pop(this,2)"
+            ></div>
+
+
+            <div
+                class="balloon-word"
+                id="bw2"
+            >
+
+                DREAMS
+                <br>
+                ✨
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BALLOON 4 -->
+
+        <div class="balloon-item">
+
+            <div
+                class="balloon b4"
+                onclick="pop(this,3)"
+            ></div>
+
+
+            <div
+                class="balloon-word"
+                id="bw3"
+            >
+
+                HAPPINESS
+                <br>
+                💗
+
             </div>
 
         </div>
 
     </div>
 
+
+    <p
+        class="sub"
+        id="balloonStatus"
+    >
+
+        0 / 4 popped
+
+    </p>
+
+
+    <button
+        class="btn hidden"
+        id="balloonNext"
+        onclick="go(5)"
+    >
+
+        You Found Them All 🎁
+
+    </button>
+
+</div>
+
 </section>
+
+
+
+<!-- SCENE 5 GIFT -->
+
+<section
+    class="scene"
+    id="s5"
+>
+
+<div class="content">
+
+    <div class="eyebrow">
+        One more thing...
+    </div>
+
+
+    <h1>
+        There is a gift 🎁
+    </h1>
+
+
+    <div
+        class="gift"
+        id="gift"
+        onclick="openGift()"
+    >
+
+        <div class="gift-inside">
+            💝
+        </div>
+
+
+        <div class="bow">
+            🎀
+        </div>
+
+
+        <div class="glid"></div>
+
+
+        <div class="gbody">
+
+            <div class="ribbonV"></div>
+
+            <div class="ribbonH"></div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="gift-note"
+        id="giftNote"
+    >
+
+        Tap the box.
+
+        Yes, really. 😂
+
+    </div>
+
+
+    <button
+        class="btn hidden"
+        id="giftNext"
+        onclick="go(6)"
+    >
+
+        Open the Message 💌
+
+    </button>
+
+</div>
+
+</section>
+
+
+
+<!-- SCENE 6 REASONS -->
+
+<section
+    class="scene"
+    id="s6"
+>
+
+<div class="content">
+
+    <div class="eyebrow">
+        A few things I wish for you
+    </div>
+
+
+    <h1>
+        For Alara 💗
+    </h1>
+
+
+    <div class="reason-card">
+
+        <div
+            class="reason-icon"
+            id="ri"
+        >
+            🌷
+        </div>
+
+
+        <div
+            class="reason-title"
+            id="rt"
+        >
+            Beautiful Days
+        </div>
+
+
+        <div
+            class="reason-text"
+            id="rx"
+        >
+
+            I hope life gives you
+            many calm, beautiful days
+            that you can look back on
+            with happiness.
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="nextReason()"
+        id="reasonBtn"
+    >
+
+        Next One ✨
+
+    </button>
+
+</div>
+
+</section>
+
+
+
+<!-- SCENE 7 CAKE -->
+
+<section
+    class="scene"
+    id="s7"
+>
+
+<div class="content">
+
+    <div class="eyebrow">
+        Make a birthday wish
+    </div>
+
+
+    <h1>
+        Three Little Candles 🕯️
+    </h1>
+
+
+    <div class="cakebox">
+
+
+        <!-- CANDLE 1 -->
+
+        <div
+            class="candle"
+            onclick="candle(this)"
+        >
+
+            <div class="flame"></div>
+
+        </div>
+
+
+        <!-- CANDLE 2 -->
+
+        <div
+            class="candle"
+            onclick="candle(this)"
+        >
+
+            <div class="flame"></div>
+
+        </div>
+
+
+        <!-- CANDLE 3 -->
+
+        <div
+            class="candle"
+            onclick="candle(this)"
+        >
+
+            <div class="flame"></div>
+
+        </div>
+
+
+        <div class="cream"></div>
+
+        <div class="cbody"></div>
+
+    </div>
+
+
+    <p
+        class="sub"
+        id="candleText"
+    >
+
+        Tap each candle
+        and make a wish ✨
+
+    </p>
+
+
+    <button
+        class="btn hidden"
+        id="cakeNext"
+        onclick="go(8);confetti()"
+    >
+
+        Wish Complete 💫
+
+    </button>
+
+</div>
+
+</section>
+
+
+
+<!-- SCENE 8 FINAL -->
+
+<section
+    class="scene"
+    id="s8"
+>
+
+<div class="content">
+
+    <div class="finalheart">
+        ❤️
+    </div>
+
+
+    <div class="eyebrow">
+        One last message
+    </div>
+
+
+    <h1 class="title">
+        For You, Alara
+    </h1>
+
+
+    <div class="letter-card">
+
+        <p>
+
+            Alara,
+
+            <br><br>
+
+            Happy Birthday. ❤️
+
+            <br><br>
+
+            I don't know every little thing
+            about your world,
+            and I won't pretend that I do.
+
+            But I do know one thing:
+
+            you are important enough to me
+            that I wanted to make something
+            special just for your birthday.
+
+            <br><br>
+
+            I hope this new year of your life
+            brings you peace when you need it,
+            courage when things feel difficult,
+            beautiful opportunities,
+            and countless moments worth remembering.
+
+            <br><br>
+
+            I hope you get to chase the things
+            you want, laugh at the unexpected
+            moments, and make memories that stay
+            with you for a very long time.
+
+            <br><br>
+
+            And if this little website made you
+            laugh even once, then all those hours
+            of coding were absolutely worth it.
+
+            😭😂
+
+            <br><br>
+
+            May your birthday be as special
+            as the place you have in my heart.
+
+            <br><br>
+
+            Happy Birthday, Alara. 🎂🌷
+
+            <br>
+
+            Stay happy.
+            Stay blessed.
+            And keep being you.
+
+            ❤️
+
+        </p>
+
+
+        <div class="signature">
+
+            With lots of love ❤️
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
 
 
 <script>
 
 /* =========================
-   SCENE SYSTEM
+   PAGE NAVIGATION
 ========================= */
 
-let currentScene = 1;
+let scene = 1;
 
-function goTo(number) {
 
-    const oldScene =
-        document.getElementById("scene" + currentScene);
+function go(n){
 
-    const newScene =
-        document.getElementById("scene" + number);
+    document
+        .getElementById("s" + scene)
+        .classList
+        .remove("active");
 
-    if (!oldScene || !newScene) {
-        return;
+
+    document
+        .getElementById("s" + n)
+        .classList
+        .add("active");
+
+
+    scene = n;
+
+
+    for(
+        let i = 1;
+        i <= 8;
+        i++
+    ){
+
+        document
+            .getElementById("d" + i)
+            .classList
+            .toggle(
+                "on",
+                i === n
+            );
+
     }
 
-    oldScene.classList.remove("active");
 
-    newScene.classList.add("active");
+    if(n === 8){
 
-    currentScene = number;
+        confetti();
 
-    updateDots();
-
-    if (number === 8) {
-        createConfetti();
         startMusic();
-    }
-}
-
-
-function updateDots() {
-
-    for (let i = 1; i <= 8; i++) {
-
-        const dot =
-            document.getElementById("dot" + i);
-
-        if (i === currentScene) {
-            dot.classList.add("active");
-        } else {
-            dot.classList.remove("active");
-        }
 
     }
 
 }
+
 
 
 /* =========================
    ENVELOPE
 ========================= */
 
-let envelopeOpened = false;
+let envOpened = false;
 
-function openEnvelope() {
 
-    if (envelopeOpened) {
-        return;
-    }
+function openEnvelope(){
 
-    envelopeOpened = true;
+    if(envOpened) return;
 
-    document
-        .getElementById("envelope")
-        .classList.add("open");
+
+    envOpened = true;
+
 
     document
-        .getElementById("envelopeHint")
+        .getElementById("env")
+        .classList
+        .add("open");
+
+
+    document
+        .getElementById("envNote")
         .innerHTML =
-        "A little message, just for you... ❤️";
+        "A little birthday message... just for you. 💗";
 
-    setTimeout(function() {
-        goTo(3);
-    }, 1800);
+
+    setTimeout(
+        () => go(3),
+        1500
+    );
 
 }
+
 
 
 /* =========================
    BALLOONS
 ========================= */
 
-let balloonsPopped = 0;
+let popped = 0;
 
-function popBalloon(balloon) {
 
-    if (balloon.classList.contains("popped")) {
-        return;
-    }
+function pop(el,i){
 
-    balloon.classList.add("popped");
+    if(
+        el.classList.contains("popped")
+    ) return;
 
-    balloonsPopped++;
 
-    createSmallPop(
-        balloon.getBoundingClientRect()
-    );
+    el.classList.add("popped");
 
-    if (balloonsPopped >= 4) {
+
+    document
+        .getElementById("bw" + i)
+        .classList
+        .add("show");
+
+
+    popped++;
+
+
+    document
+        .getElementById("balloonStatus")
+        .textContent =
+        popped + " / 4 popped";
+
+
+    burst(el);
+
+
+    if(popped === 4){
 
         document
-            .getElementById("balloonText")
-            .innerHTML =
-            "You did it! 🎉 Now there's a gift for you.";
+            .getElementById("balloonStatus")
+            .textContent =
+            "All four wishes found! 🎉";
+
 
         document
             .getElementById("balloonNext")
-            .classList.remove("hidden");
+            .classList
+            .remove("hidden");
 
     }
 
 }
+
+
+
+function burst(el){
+
+    const r =
+        el.getBoundingClientRect();
+
+
+    [
+        "✨",
+        "💗",
+        "🎉"
+    ]
+    .forEach(
+        (x,k)=>{
+
+            const e =
+                document.createElement("div");
+
+
+            e.className =
+                "popburst";
+
+
+            e.textContent = x;
+
+
+            e.style.left =
+                (r.left + r.width/2) +
+                "px";
+
+
+            e.style.top =
+                (r.top + r.height/2) +
+                "px";
+
+
+            document.body.appendChild(e);
+
+
+            e.animate(
+
+                [
+                    {
+                        transform:
+                            "translate(0,0) scale(1)",
+
+                        opacity:1
+                    },
+
+                    {
+                        transform:
+                            `translate(
+                                ${Math.random()*90-45}px,
+                                ${Math.random()*80-40}px
+                            )
+                            scale(0)`,
+
+                        opacity:0
+                    }
+                ],
+
+                {
+                    duration:
+                        650 + 100*k,
+
+                    easing:
+                        "ease-out"
+                }
+
+            );
+
+
+            setTimeout(
+                ()=>e.remove(),
+                800
+            );
+
+        }
+    );
+
+}
+
 
 
 /* =========================
@@ -1233,32 +2040,40 @@ function popBalloon(balloon) {
 
 let giftOpened = false;
 
-function openGift() {
 
-    if (giftOpened) {
-        return;
-    }
+function openGift(){
+
+    if(giftOpened) return;
+
 
     giftOpened = true;
 
+
     document
         .getElementById("gift")
-        .classList.add("open");
+        .classList
+        .add("open");
+
 
     document
-        .getElementById("giftText")
+        .getElementById("giftNote")
         .innerHTML =
-        "A little happiness, wrapped just for you. 💝";
+        "Inside: one tiny reminder that your birthday deserved something a little extra. 💝";
 
-    setTimeout(function() {
 
-        document
+    setTimeout(
+
+        ()=>document
             .getElementById("giftNext")
-            .classList.remove("hidden");
+            .classList
+            .remove("hidden"),
 
-    }, 800);
+        650
+
+    );
 
 }
+
 
 
 /* =========================
@@ -1267,472 +2082,564 @@ function openGift() {
 
 const reasons = [
 
-    {
-        icon: "😊",
-        title: "Your Smile",
-        text: "Your smile has a way of making even an ordinary day feel beautiful."
-    },
+    [
+        "🌷",
+        "Beautiful Days",
 
-    {
-        icon: "💗",
-        title: "Your Heart",
-        text: "The kindness and warmth in your heart are some of the things I treasure most."
-    },
+        "I hope life gives you many calm, beautiful days that you can look back on with happiness."
+    ],
 
-    {
-        icon: "🌸",
-        title: "Your Presence",
-        text: "Just having you around can make everything feel a little better."
-    },
+    [
+        "✨",
+        "Big Dreams",
 
-    {
-        icon: "✨",
-        title: "You Are You",
-        text: "I don't need a reason to care about you. You are simply someone incredibly special to me."
-    },
+        "May you always have the courage to dream big and the patience to reach those dreams."
+    ],
 
-    {
-        icon: "🥰",
-        title: "Everything About You",
-        text: "There are probably a thousand little things I could name, and I would still have more to say."
-    }
+    [
+        "🌙",
+        "Peace",
+
+        "I hope you always find a little peace, especially on the days when everything feels too loud."
+    ],
+
+    [
+        "🍀",
+        "Good Luck",
+
+        "May the right opportunities find you, and may good things arrive when you least expect them."
+    ],
+
+    [
+        "💗",
+        "Your Importance",
+
+        "Some people become important without needing a long explanation. You are one of those people to me."
+    ]
 
 ];
 
-let reasonIndex = 0;
 
-function nextReason() {
+let ri = 0;
 
-    reasonIndex++;
 
-    if (reasonIndex >= reasons.length) {
+function nextReason(){
 
-        goTo(7);
+    ri++;
+
+
+    if(
+        ri >= reasons.length
+    ){
+
+        go(7);
 
         return;
+
     }
 
-    const reason =
-        reasons[reasonIndex];
 
     document
-        .getElementById("reasonIcon")
-        .innerHTML = reason.icon;
+        .getElementById("ri")
+        .textContent =
+        reasons[ri][0];
+
 
     document
-        .getElementById("reasonTitle")
-        .innerHTML = reason.title;
+        .getElementById("rt")
+        .textContent =
+        reasons[ri][1];
+
 
     document
-        .getElementById("reasonText")
-        .innerHTML = reason.text;
+        .getElementById("rx")
+        .textContent =
+        reasons[ri][2];
+
+
+    if(
+        ri === reasons.length - 1
+    ){
+
+        document
+            .getElementById("reasonBtn")
+            .textContent =
+            "One Last Surprise 🎂";
+
+    }
 
 }
+
 
 
 /* =========================
    CANDLES
 ========================= */
 
-let candlesOff = 0;
+let off = 0;
 
-function blowCandle(candle) {
 
-    if (candle.classList.contains("off")) {
-        return;
-    }
+function candle(el){
 
-    candle.classList.add("off");
+    if(
+        el.classList.contains("off")
+    ) return;
 
-    candlesOff++;
 
-    if (candlesOff >= 3) {
+    el.classList.add("off");
+
+
+    off++;
+
+
+    if(off === 3){
 
         document
             .getElementById("candleText")
-            .innerHTML =
-            "Wish made! May every beautiful dream of yours come true. ✨❤️";
+            .textContent =
+            "Wish made. May this year bring you more happiness than you expected. ✨";
+
 
         document
             .getElementById("cakeNext")
-            .classList.remove("hidden");
+            .classList
+            .remove("hidden");
 
-        createConfetti();
+
+        confetti();
 
     }
 
 }
+
 
 
 /* =========================
-   HEARTS
+   FLOATING HEARTS
 ========================= */
 
-function createHearts(amount = 20) {
+function hearts(n=10){
 
-    for (let i = 0; i < amount; i++) {
+    for(
+        let i=0;
+        i<n;
+        i++
+    ){
 
-        const heart =
+        const h =
             document.createElement("div");
 
-        heart.className =
-            "background-heart";
 
-        heart.innerHTML =
-            Math.random() > 0.5
+        h.className =
+            "bgheart";
+
+
+        h.textContent =
+            Math.random() > .5
             ? "❤️"
             : "💗";
 
-        heart.style.left =
-            Math.random() * 100 + "vw";
 
-        heart.style.animationDelay =
-            Math.random() * 5 + "s";
+        h.style.left =
+            Math.random()*100 +
+            "vw";
 
-        heart.style.animationDuration =
-            (5 + Math.random() * 5) + "s";
 
-        document.body.appendChild(heart);
+        h.style.animationDelay =
+            Math.random()*4 +
+            "s";
 
-        setTimeout(function() {
-            heart.remove();
-        }, 11000);
+
+        h.style.animationDuration =
+            5 + Math.random()*4 +
+            "s";
+
+
+        document.body.appendChild(h);
+
+
+        setTimeout(
+            ()=>h.remove(),
+            10000
+        );
 
     }
 
 }
+
+
+hearts(14);
+
 
 
 /* =========================
    CONFETTI
 ========================= */
 
-function createConfetti() {
+function confetti(){
 
-    const items = [
+    const a = [
         "🎉",
         "✨",
         "💗",
-        "🌸",
+        "🌷",
         "🎀",
-        "💕"
+        "💕",
+        "🥳"
     ];
 
-    for (let i = 0; i < 45; i++) {
 
-        const piece =
+    for(
+        let i=0;
+        i<48;
+        i++
+    ){
+
+        const e =
             document.createElement("div");
 
-        piece.className =
-            "confetti";
 
-        piece.innerHTML =
-            items[
+        e.className =
+            "conf";
+
+
+        e.textContent =
+            a[
                 Math.floor(
-                    Math.random() * items.length
+                    Math.random()*a.length
                 )
             ];
 
-        piece.style.left =
-            Math.random() * 100 + "vw";
 
-        piece.style.animationDuration =
-            (2.5 + Math.random() * 3) + "s";
-
-        piece.style.fontSize =
-            (12 + Math.random() * 18) + "px";
-
-        document.body.appendChild(piece);
-
-        setTimeout(function() {
-            piece.remove();
-        }, 6000);
-
-    }
-
-}
+        e.style.left =
+            Math.random()*100 +
+            "vw";
 
 
-/* =========================
-   BALLOON POP EFFECT
-========================= */
-
-function createSmallPop(rect) {
-
-    const emojis = [
-        "✨",
-        "💗",
-        "🎉"
-    ];
-
-    for (let i = 0; i < 7; i++) {
-
-        const item =
-            document.createElement("div");
-
-        item.style.position = "fixed";
-        item.style.left =
-            rect.left +
-            rect.width / 2 +
+        e.style.fontSize =
+            12 + Math.random()*18 +
             "px";
 
-        item.style.top =
-            rect.top +
-            rect.height / 2 +
-            "px";
 
-        item.style.zIndex = "300";
+        e.style.animationDuration =
+            2.5 + Math.random()*2.5 +
+            "s";
 
-        item.style.fontSize = "18px";
 
-        item.innerHTML =
-            emojis[
-                Math.floor(
-                    Math.random() * emojis.length
-                )
-            ];
+        document.body.appendChild(e);
 
-        item.animate(
-            [
-                {
-                    transform: "translate(0,0) scale(1)",
-                    opacity: 1
-                },
-                {
-                    transform:
-                        "translate(" +
-                        (Math.random() * 100 - 50) +
-                        "px," +
-                        (Math.random() * 100 - 50) +
-                        "px) scale(0)",
-                    opacity: 0
-                }
-            ],
-            {
-                duration: 600,
-                easing: "ease-out"
-            }
+
+        setTimeout(
+            ()=>e.remove(),
+            6000
         );
 
-        document.body.appendChild(item);
-
-        setTimeout(function() {
-            item.remove();
-        }, 650);
-
     }
 
 }
+
 
 
 /* =========================
    BIRTHDAY MUSIC
-   Uses Web Audio API
 ========================= */
 
-let audioContext = null;
-let musicPlaying = false;
-let musicTimer = null;
-let noteIndex = 0;
+let ac = null;
+
+let musicOn = false;
+
+let timer = null;
+
+let step = 0;
 
 
 /*
-   A simple birthday melody.
-   It starts after the first interaction
-   because mobile browsers block
-   automatic audio.
+    Birthday-style melody.
+    Browser requires user interaction
+    before audio can play.
 */
 
 const melody = [
 
-    [264, 0.35],
-    [264, 0.35],
-    [297, 0.7],
-    [264, 0.7],
-    [352, 0.7],
-    [330, 1.2],
+    [264,.28],
+    [264,.28],
+    [297,.52],
+    [264,.52],
+    [352,.52],
+    [330,.82],
 
-    [264, 0.35],
-    [264, 0.35],
-    [297, 0.7],
-    [264, 0.7],
-    [396, 0.7],
-    [352, 1.2],
+    [264,.28],
+    [264,.28],
+    [297,.52],
+    [264,.52],
+    [396,.52],
+    [352,.82],
 
-    [264, 0.35],
-    [264, 0.35],
-    [528, 0.7],
-    [440, 0.7],
-    [352, 0.7],
-    [330, 0.7],
-    [297, 1.2]
+    [264,.28],
+    [264,.28],
+    [528,.52],
+    [440,.52],
+    [352,.52],
+    [330,.52],
+    [297,.82]
 
 ];
 
 
-function getAudioContext() {
 
-    if (!audioContext) {
+function audio(){
 
-        audioContext =
-            new (
+    if(!ac){
+
+        ac =
+            new(
                 window.AudioContext ||
                 window.webkitAudioContext
             )();
 
     }
 
-    return audioContext;
+
+    if(
+        ac.state === "suspended"
+    ){
+
+        ac.resume();
+
+    }
+
+
+    return ac;
 
 }
 
 
-function playNote(frequency, duration) {
 
-    const ctx =
-        getAudioContext();
+function tone(
+    f,
+    d,
+    when,
+    type="sine",
+    vol=.10
+){
 
-    const oscillator =
-        ctx.createOscillator();
+    const c =
+        audio();
 
-    const gain =
-        ctx.createGain();
 
-    oscillator.type = "sine";
+    const o =
+        c.createOscillator();
 
-    oscillator.frequency.value =
-        frequency;
 
-    gain.gain.setValueAtTime(
-        0.0001,
-        ctx.currentTime
+    const g =
+        c.createGain();
+
+
+    o.type =
+        type;
+
+
+    o.frequency.setValueAtTime(
+        f,
+        when
     );
 
-    gain.gain.exponentialRampToValueAtTime(
-        0.08,
-        ctx.currentTime + 0.02
+
+    g.gain.setValueAtTime(
+        .0001,
+        when
     );
 
-    gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        ctx.currentTime + duration
+
+    g.gain.exponentialRampToValueAtTime(
+        vol,
+        when + .025
     );
 
-    oscillator.connect(gain);
 
-    gain.connect(ctx.destination);
+    g.gain.exponentialRampToValueAtTime(
+        .0001,
+        when + d
+    );
 
-    oscillator.start();
 
-    oscillator.stop(
-        ctx.currentTime + duration + 0.05
+    o.connect(g);
+
+
+    g.connect(
+        c.destination
+    );
+
+
+    o.start(
+        when
+    );
+
+
+    o.stop(
+        when + d + .03
     );
 
 }
 
 
-function playNextNote() {
 
-    if (!musicPlaying) {
-        return;
-    }
+function chord(
+    root,
+    when
+){
 
-    const note =
-        melody[noteIndex];
-
-    playNote(
-        note[0],
-        note[1]
+    tone(
+        root,
+        .55,
+        when,
+        "triangle",
+        .055
     );
 
-    noteIndex++;
 
-    if (noteIndex >= melody.length) {
-        noteIndex = 0;
+    tone(
+        root * 1.25,
+        .55,
+        when,
+        "triangle",
+        .045
+    );
+
+
+    tone(
+        root * 1.5,
+        .55,
+        when,
+        "triangle",
+        .04
+    );
+
+}
+
+
+
+function musicLoop(){
+
+    if(!musicOn) return;
+
+
+    const c =
+        audio();
+
+
+    const n =
+        melody[step];
+
+
+    const now =
+        c.currentTime + .03;
+
+
+    tone(
+        n[0],
+        n[1],
+        now,
+        "square",
+        .065
+    );
+
+
+    if(
+        step % 4 === 0
+    ){
+
+        chord(
+            n[0]/2,
+            now
+        );
+
     }
 
-    musicTimer =
+
+    step =
+        (step + 1)
+        % melody.length;
+
+
+    timer =
         setTimeout(
-            playNextNote,
-            (note[1] + 0.08) * 1000
+            musicLoop,
+            (n[1] + .06)*1000
         );
 
 }
 
 
-function startMusic() {
 
-    if (musicPlaying) {
-        return;
-    }
+function startMusic(){
 
-    const ctx =
-        getAudioContext();
+    if(musicOn) return;
 
-    if (ctx.state === "suspended") {
-        ctx.resume();
-    }
 
-    musicPlaying = true;
+    audio();
+
+
+    musicOn = true;
+
 
     document
         .getElementById("musicBtn")
-        .innerHTML = "🔊";
+        .textContent =
+        "🔊";
 
-    playNextNote();
+
+    document
+        .getElementById("musicBtn")
+        .classList
+        .add("on");
+
+
+    musicLoop();
 
 }
 
 
-function stopMusic() {
 
-    musicPlaying = false;
+function stopMusic(){
 
-    clearTimeout(musicTimer);
+    musicOn = false;
+
+
+    clearTimeout(timer);
+
 
     document
         .getElementById("musicBtn")
-        .innerHTML = "🎵";
+        .textContent =
+        "🎵";
+
+
+    document
+        .getElementById("musicBtn")
+        .classList
+        .remove("on");
 
 }
 
 
-function toggleMusic() {
 
-    if (musicPlaying) {
+function toggleMusic(){
+
+    if(musicOn){
+
         stopMusic();
-    } else {
+
+    }else{
+
         startMusic();
+
     }
 
 }
-
-
-/* Start gentle hearts */
-
-createHearts(12);
-
-
-/* Start music on first tap */
-
-document.addEventListener(
-    "click",
-    function startAfterFirstTap() {
-
-        if (!musicPlaying) {
-            startMusic();
-        }
-
-        document.removeEventListener(
-            "click",
-            startAfterFirstTap
-        );
-
-    },
-    { once: true }
-);
 
 </script>
+
 
 </body>
 </html>
